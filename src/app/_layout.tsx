@@ -1,18 +1,40 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
+import { DarkTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+import { Colors } from '@/constants/theme';
+import { CartProvider } from '@/store/cart';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const theme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    background: Colors.background,
+    card: Colors.background,
+    primary: Colors.accent,
+    text: Colors.text,
+    border: Colors.border,
+  },
+};
+
+export default function RootLayout() {
+  useEffect(() => {
+    SplashScreen.hideAsync();
+  }, []);
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
+    <ThemeProvider value={theme}>
+      <CartProvider>
+        <StatusBar style="light" />
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: Colors.background } }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="game/[id]" />
+          <Stack.Screen name="watch/[id]" options={{ presentation: 'modal' }} />
+        </Stack>
+      </CartProvider>
     </ThemeProvider>
   );
 }
