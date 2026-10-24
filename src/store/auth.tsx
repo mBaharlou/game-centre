@@ -2,13 +2,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Crypto from 'expo-crypto';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
+import { getGame } from '@/data/games';
+
 /**
  * Accounts are stored on this device only (AsyncStorage), with salted SHA-256 password hashes.
  * Moving them to a cloud backend later only means replacing the functions in this file.
  */
 
-export type LibraryItem = { gameId: string; purchasedAt: string; pricePaid: number };
-export type Order = { id: string; date: string; items: { gameId: string; price: number }[]; total: number };
+/** A game saved to a profile: enough to show it without loading it again. */
+export type GameRef = { gameId: string; title: string; image: string | null; accent: string };
+
+export type LibraryItem = GameRef & { addedAt: string; store?: string; platform?: string };
 
 export type Profile = {
   displayName: string;
@@ -26,8 +30,7 @@ export type User = Profile & {
   email: string;
   createdAt: string;
   library: LibraryItem[];
-  wishlist: string[];
-  orders: Order[];
+  wishlist: GameRef[];
 };
 
 type StoredUser = User & { passwordHash: string; salt: string };
@@ -39,9 +42,11 @@ type AuthState = {
   signIn: (identifier: string, password: string) => Promise<string | null>;
   signOut: () => Promise<void>;
   updateProfile: (patch: Partial<Profile>) => Promise<void>;
-  purchase: (items: { gameId: string; price: number }[]) => Promise<Order | null>;
-  toggleWishlist: (gameId: string) => Promise<void>;
+  addToLibrary: (game: GameRef, where?: { store?: string; platform?: string }) => Promise<void>;
+  removeFromLibrary: (gameId: string) => Promise<void>;
+  toggleWishlist: (game: GameRef) => Promise<void>;
   owns: (gameId: string) => boolean;
+  wishes: (gameId: string) => boolean;
 };
 
 const USERS_KEY = 'gc.users.v1';
@@ -51,10 +56,24 @@ export const AVATAR_COLORS = ['#8B5CF6', '#22D3EE', '#F43F5E', '#F97316', '#34D3
 
 const AuthContext = createContext<AuthState | null>(null);
 
+/** Older saves stored only game ids; fill in titles and art from the catalog. */
+function refFromId(gameId: string): GameRef {
+  const g = getGame(gameId);
+  return { gameId, title: g?.title ?? gameId, image: g?.images.cover ?? null, accent: g?.accent ?? '#8B5CF6' };
+}
+
+function migrate(u: StoredUser): StoredUser {
+  const library = (u.library ?? []).map((l) =>
+    'title' in l ? l : { ...refFromId((l as { gameId: string }).gameId), addedAt: (l as { purchasedAt?: string }).purchasedAt ?? u.createdAt },
+  );
+  const wishlist = (u.wishlist ?? []).map((w) => (typeof w === 'string' ? refFromId(w) : w));
+  return { ...u, library, wishlist };
+}
+
 async function loadUsers(): Promise<StoredUser[]> {
   try {
     const raw = await AsyncStorage.getItem(USERS_KEY);
-    return raw ? (JSON.parse(raw) as StoredUser[]) : [];
+    return raw ? (JSON.parse(raw) as StoredUser[]).map(migrate) : [];
   } catch {
     return [];
   }
@@ -88,15 +107,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   /** Applies a change to the signed-in user and saves it. */
   const mutate = useCallback(
     async (change: (u: StoredUser) => StoredUser) => {
-      if (!user) return null;
+      if (!user) return;
       const users = await loadUsers();
       const index = users.findIndex((u) => u.id === user.id);
-      if (index === -1) return null;
+      if (index === -1) return;
       users[index] = change(users[index]);
       await saveUsers(users);
-      const updated = toPublic(users[index]);
-      setUser(updated);
-      return updated;
+      setUser(toPublic(users[index]));
     },
     [user],
   );
@@ -134,7 +151,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           createdAt: new Date().toISOString(),
           library: [],
           wishlist: [],
-          orders: [],
           salt,
           passwordHash: await hash(password, salt),
         };
@@ -165,34 +181,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await mutate((u) => ({ ...u, ...patch, socials: { ...u.socials, ...patch.socials } }));
       },
 
-      async purchase(items) {
-        const order: Order = {
-          id: Crypto.randomUUID().slice(0, 8).toUpperCase(),
-          date: new Date().toISOString(),
-          items,
-          total: items.reduce((sum, i) => sum + i.price, 0),
-        };
-        const updated = await mutate((u) => {
-          const fresh = items.filter((i) => !u.library.some((l) => l.gameId === i.gameId));
-          return {
-            ...u,
-            library: [...u.library, ...fresh.map((i) => ({ gameId: i.gameId, purchasedAt: order.date, pricePaid: i.price }))],
-            wishlist: u.wishlist.filter((id) => !items.some((i) => i.gameId === id)),
-            orders: [order, ...u.orders],
-          };
-        });
-        return updated ? order : null;
-      },
-
-      async toggleWishlist(gameId) {
+      async addToLibrary(game, where) {
         await mutate((u) => ({
           ...u,
-          wishlist: u.wishlist.includes(gameId) ? u.wishlist.filter((id) => id !== gameId) : [...u.wishlist, gameId],
+          library: [{ ...game, ...where, addedAt: new Date().toISOString() }, ...u.library.filter((l) => l.gameId !== game.gameId)],
+          wishlist: u.wishlist.filter((w) => w.gameId !== game.gameId),
+        }));
+      },
+
+      async removeFromLibrary(gameId) {
+        await mutate((u) => ({ ...u, library: u.library.filter((l) => l.gameId !== gameId) }));
+      },
+
+      async toggleWishlist(game) {
+        await mutate((u) => ({
+          ...u,
+          wishlist: u.wishlist.some((w) => w.gameId === game.gameId) ? u.wishlist.filter((w) => w.gameId !== game.gameId) : [game, ...u.wishlist],
         }));
       },
 
       owns(gameId) {
         return !!user?.library.some((l) => l.gameId === gameId);
+      },
+
+      wishes(gameId) {
+        return !!user?.wishlist.some((w) => w.gameId === gameId);
       },
     }),
     [user, ready, mutate],

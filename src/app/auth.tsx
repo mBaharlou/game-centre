@@ -12,6 +12,7 @@ import { useAuth } from '@/store/auth';
 const REASONS: Record<string, string> = {
   checkout: 'Sign in to buy games and keep them in your library.',
   wishlist: 'Sign in to save games to your wishlist.',
+  library: 'Sign in to keep track of the games you own.',
 };
 
 export default function AuthScreen() {

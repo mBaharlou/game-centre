@@ -8,7 +8,8 @@ import { LiveBadge, PlatformBadge } from '@/components/badges';
 import { GameCover } from '@/components/game-cover';
 import { Avatar } from '@/components/ui';
 import { Colors, Platforms, Radius, type PlatformId } from '@/constants/theme';
-import { getGame, links, type Game, type IconName, type Trailer } from '@/data/games';
+import { getGame, type IconName, type Trailer } from '@/data/games';
+import { accentFor, type Art } from '@/services/game-details';
 import type { KickStream } from '@/services/kick';
 import { openLink } from '@/utils/open-link';
 
@@ -18,6 +19,8 @@ export function openKickStream(stream: KickStream) {
     params: {
       kind: 'kick',
       gameId: stream.gameId,
+      gameTitle: stream.gameTitle,
+      kick: stream.slug,
       channel: stream.channel,
       title: stream.title,
       username: stream.username,
@@ -29,10 +32,10 @@ export function openKickStream(stream: KickStream) {
 
 /** A real live stream from Kick. Opens in the in-app player. */
 export function KickStreamCard({ stream, width, showGame }: { stream: KickStream; width?: number; showGame?: boolean }) {
-  const game = getGame(stream.gameId)!;
+  const game: Art = getGame(stream.gameId) ?? { title: stream.gameTitle, accent: accentFor(stream.gameTitle), images: {} };
   return (
     <Pressable onPress={() => openKickStream(stream)} style={({ pressed }) => [{ width }, pressed && styles.pressed]}>
-      <GameCover game={game} variant="header" style={styles.thumb}>
+      <GameCover game={game} variant="header" style={styles.thumb} showTitle={!stream.thumbnail}>
         {stream.thumbnail && <Image source={{ uri: stream.thumbnail }} style={StyleSheet.absoluteFill} contentFit="cover" transition={200} />}
         <LinearGradient colors={['rgba(0,0,0,0.35)', 'transparent', 'rgba(0,0,0,0.55)']} style={StyleSheet.absoluteFill} />
         <View style={styles.topLeft}>
@@ -64,7 +67,7 @@ export function KickStreamCard({ stream, width, showGame }: { stream: KickStream
 }
 
 /** An official Steam trailer. Opens in the in-app player. */
-export function TrailerCard({ game, trailer, index, width }: { game: Game; trailer: Trailer; index: number; width?: number }) {
+export function TrailerCard({ game, trailer, index, width }: { game: Art & { id: string }; trailer: Trailer; index: number; width?: number }) {
   return (
     <Pressable
       onPress={() => router.push({ pathname: '/watch', params: { kind: 'trailer', gameId: game.id, index: String(index) } })}
@@ -86,9 +89,8 @@ export function TrailerCard({ game, trailer, index, width }: { game: Game; trail
 }
 
 /** Big button that opens a game's live directory on Twitch, YouTube or Kick. */
-export function PlatformLiveButton({ platform, game }: { platform: PlatformId; game: Game }) {
+export function PlatformLiveButton({ platform, url }: { platform: PlatformId; url: string }) {
   const p = Platforms[platform];
-  const url = platform === 'twitch' ? links.twitch(game) : platform === 'youtube' ? links.youtubeLive(game) : links.kick(game);
   const dark = platform === 'kick';
   return (
     <Pressable onPress={() => openLink(url)} style={({ pressed }) => [styles.platformButton, { backgroundColor: p.color }, pressed && styles.pressed]}>

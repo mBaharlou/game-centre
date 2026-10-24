@@ -6,7 +6,7 @@ import { GameCover } from '@/components/game-cover';
 import { PriceTag } from '@/components/ui';
 import { Colors, Radius } from '@/constants/theme';
 import type { Game } from '@/data/games';
-import { useAuth } from '@/store/auth';
+import { useAuth, type GameRef } from '@/store/auth';
 
 const openGame = (game: Game) => router.push({ pathname: '/game/[id]', params: { id: game.id } });
 
@@ -32,6 +32,25 @@ export function GameTile({ game, width }: { game: Game; width: number }) {
       <View style={{ marginTop: 6 }}>
         <PriceTag game={game} />
       </View>
+    </Pressable>
+  );
+}
+
+/** Tile for a game saved to a profile (library or wishlist); works for any game. */
+export function RefTile({ item, width, caption }: { item: GameRef; width: number; caption?: string }) {
+  return (
+    <Pressable
+      onPress={() => router.push({ pathname: '/game/[id]', params: { id: item.gameId } })}
+      style={({ pressed }) => [{ width }, pressed && { opacity: 0.85, transform: [{ scale: 0.98 }] }]}>
+      <GameCover game={{ title: item.title, accent: item.accent, images: { cover: item.image } }} style={styles.tileCover} />
+      <Text style={styles.tileTitle} numberOfLines={1}>
+        {item.title}
+      </Text>
+      {!!caption && (
+        <Text style={styles.genres} numberOfLines={1}>
+          {caption}
+        </Text>
+      )}
     </Pressable>
   );
 }

@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 import { Colors } from '@/constants/theme';
 import { AuthProvider, useAuth } from '@/store/auth';
-import { CartProvider } from '@/store/cart';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,10 +24,8 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={theme}>
       <AuthProvider>
-        <CartProvider>
-          <StatusBar style="light" />
-          <AppStack />
-        </CartProvider>
+        <StatusBar style="light" />
+        <AppStack />
       </AuthProvider>
     </ThemeProvider>
   );

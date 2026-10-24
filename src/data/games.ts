@@ -102,21 +102,21 @@ const enc = encodeURIComponent;
 
 /** Outside links. Every URL here opens a real page on the platform. */
 export const links = {
-  steam: (g: Game) => `https://store.steampowered.com/app/${g.appId}`,
+  steam: (appId: number | string) => `https://store.steampowered.com/app/${appId}`,
   twitch: (g: Game) => `https://www.twitch.tv/directory/category/${g.twitch}`,
-  kick: (g: Game) => `https://kick.com/category/${g.kick}`,
+  kick: (slug: string) => `https://kick.com/category/${slug}`,
   kickChannel: (slug: string) => `https://kick.com/${slug}`,
   /** YouTube search with the "Live" filter switched on. */
-  youtubeLive: (g: Game) => `https://www.youtube.com/results?search_query=${enc(g.title)}&sp=EgJAAQ%253D%253D`,
+  youtubeLive: (title: string) => `https://www.youtube.com/results?search_query=${enc(title)}&sp=EgJAAQ%253D%253D`,
   youtube: (query: string) => `https://www.youtube.com/results?search_query=${enc(query)}`,
 };
 
 /** Ready-made YouTube searches for the "best players" section of a game. */
-export function youtubeTopics(g: Game): { icon: IconName; title: string; subtitle: string; url: string }[] {
+export function youtubeTopics(title: string): { icon: IconName; title: string; subtitle: string; url: string }[] {
   return [
-    { icon: 'trophy-outline', title: 'Best players & pro gameplay', subtitle: 'Top-level play to learn from', url: links.youtube(`${g.title} pro gameplay best player`) },
-    { icon: 'school-outline', title: 'Beginner guides', subtitle: 'Tips for your first hours', url: links.youtube(`${g.title} beginner guide tips`) },
-    { icon: 'timer-outline', title: 'Speedruns & records', subtitle: 'The fastest and most skilled runs', url: links.youtube(`${g.title} speedrun world record`) },
-    { icon: 'star-outline', title: 'Reviews', subtitle: 'Is it worth buying?', url: links.youtube(`${g.title} review`) },
+    { icon: 'trophy-outline', title: 'Best players & pro gameplay', subtitle: 'Top-level play to learn from', url: links.youtube(`${title} pro gameplay best player`) },
+    { icon: 'school-outline', title: 'Beginner guides', subtitle: 'Tips for your first hours', url: links.youtube(`${title} beginner guide tips`) },
+    { icon: 'timer-outline', title: 'Speedruns & records', subtitle: 'The fastest and most skilled runs', url: links.youtube(`${title} speedrun world record`) },
+    { icon: 'star-outline', title: 'Reviews', subtitle: 'Is it worth buying?', url: links.youtube(`${title} review`) },
   ];
 }

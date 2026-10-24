@@ -4,10 +4,10 @@ import { router } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { GameTile } from '@/components/game-row';
+import { RefTile } from '@/components/game-row';
 import { Avatar, GradientButton, SectionHeader } from '@/components/ui';
 import { AccentGradient, Colors, MaxContentWidth, Platforms, Radius, Spacing, TabBarHeight } from '@/constants/theme';
-import { formatPrice, getGame, type Game, type IconName } from '@/data/games';
+import type { IconName } from '@/data/games';
 import { useAuth, type User } from '@/store/auth';
 import { openLink } from '@/utils/open-link';
 
@@ -31,7 +31,7 @@ function SignedOut() {
   const perks: { icon: IconName; text: string }[] = [
     { icon: 'bookshelf', text: 'Your own game library' },
     { icon: 'heart-outline', text: 'Wishlist for games you want' },
-    { icon: 'receipt', text: 'Order history' },
+    { icon: 'tag-search-outline', text: 'Advice on where to buy each game' },
     { icon: 'account-star-outline', text: 'Profile with your favourite genres, platforms and channels' },
   ];
   return (
@@ -67,9 +67,7 @@ function SignedOut() {
 
 function SignedIn({ user, width }: { user: User; width: number }) {
   const { signOut } = useAuth();
-  const library = user.library.map((l) => getGame(l.gameId)).filter((g): g is Game => !!g);
-  const wishlist = user.wishlist.map(getGame).filter((g): g is Game => !!g);
-  const spent = user.orders.reduce((sum, o) => sum + o.total, 0);
+  const { library, wishlist } = user;
   const tileWidth = (width - Spacing.three * 4) / 3;
   const since = new Date(user.createdAt).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
 
@@ -115,8 +113,8 @@ function SignedIn({ user, width }: { user: User; width: number }) {
         <View style={styles.stats}>
           <Stat value={String(library.length)} label="Games" />
           <Stat value={String(wishlist.length)} label="Wishlist" />
-          <Stat value={String(user.orders.length)} label="Orders" />
-          <Stat value={formatPrice(spent).replace('Free', '$0')} label="Spent" />
+          <Stat value={String(user.platforms.length)} label="Platforms" />
+          <Stat value={String(user.favoriteGenres.length)} label="Genres" />
         </View>
 
         {(user.favoriteGenres.length > 0 || user.platforms.length > 0) && (
@@ -139,12 +137,12 @@ function SignedIn({ user, width }: { user: User; width: number }) {
       <SectionHeader title="My library" subtitle={library.length ? `${library.length} ${library.length === 1 ? 'game' : 'games'}` : undefined} />
       {library.length > 0 ? (
         <View style={styles.grid}>
-          {library.map((g) => (
-            <GameTile key={g.id} game={g} width={tileWidth} />
+          {library.map((item) => (
+            <RefTile key={item.gameId} item={item} width={tileWidth} caption={item.store ? `${item.platform ?? ''} · ${item.store}`.replace(/^ · /, '') : undefined} />
           ))}
         </View>
       ) : (
-        <EmptyLine text="Games you buy will show up here." action="Browse games" onPress={() => router.navigate('/')} />
+        <EmptyLine text="After you buy a game, add it to your library from its “Where to buy” page." action="Search" onPress={() => router.navigate('/search')} />
       )}
 
       {/* Wishlist */}
@@ -152,34 +150,12 @@ function SignedIn({ user, width }: { user: User; width: number }) {
       <SectionHeader title="Wishlist" />
       {wishlist.length > 0 ? (
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: Spacing.three, gap: Spacing.three }}>
-          {wishlist.map((g) => (
-            <GameTile key={g.id} game={g} width={130} />
+          {wishlist.map((item) => (
+            <RefTile key={item.gameId} item={item} width={130} />
           ))}
         </ScrollView>
       ) : (
         <EmptyLine text="Tap the heart on any game to save it here." />
-      )}
-
-      {/* Orders */}
-      <View style={styles.gap} />
-      <SectionHeader title="Order history" />
-      {user.orders.length > 0 ? (
-        <View style={{ paddingHorizontal: Spacing.three, gap: Spacing.two }}>
-          {user.orders.map((o) => (
-            <View key={o.id} style={styles.order}>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.orderTitle}>Order #{o.id}</Text>
-                <Text style={styles.muted} numberOfLines={1}>
-                  {o.items.map((i) => getGame(i.gameId)?.title ?? i.gameId).join(', ')}
-                </Text>
-                <Text style={styles.orderDate}>{new Date(o.date).toLocaleString()}</Text>
-              </View>
-              <Text style={styles.orderTotal}>{formatPrice(o.total)}</Text>
-            </View>
-          ))}
-        </View>
-      ) : (
-        <EmptyLine text="No orders yet." />
       )}
 
       <View style={{ paddingHorizontal: Spacing.three, marginTop: Spacing.five }}>
@@ -277,10 +253,6 @@ const styles = StyleSheet.create({
   completeCard: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: Spacing.three, padding: Spacing.three, borderRadius: Radius.md, borderWidth: 1, borderColor: Colors.accent + '55', backgroundColor: Colors.accentSoft },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three, paddingHorizontal: Spacing.three },
   emptyLine: { flexDirection: 'row', alignItems: 'center', gap: 12, marginHorizontal: Spacing.three, padding: 14, borderRadius: Radius.md, backgroundColor: Colors.surface, borderWidth: 1, borderColor: Colors.border },
-  order: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: Radius.md, backgroundColor: Colors.surface, borderWidth: 1, borderColor: Colors.border },
-  orderTitle: { color: Colors.text, fontSize: 15, fontWeight: '800', marginBottom: 2 },
-  orderDate: { color: Colors.textMuted, fontSize: 12, marginTop: 2 },
-  orderTotal: { color: Colors.text, fontSize: 16, fontWeight: '900' },
   signOut: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, height: 50, borderRadius: Radius.md, borderWidth: 1, borderColor: 'rgba(255,45,85,0.4)' },
   signOutText: { color: Colors.live, fontSize: 15, fontWeight: '800' },
 });

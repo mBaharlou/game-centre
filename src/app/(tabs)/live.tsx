@@ -10,17 +10,17 @@ import { KickStreamCard } from '@/components/media-cards';
 import { Chip, SectionHeader } from '@/components/ui';
 import { Colors, MaxContentWidth, Platforms, Radius, Spacing, TabBarHeight, type PlatformId } from '@/constants/theme';
 import { games, links, type Game } from '@/data/games';
-import { useKickLive } from '@/services/kick';
+import { catalogTargets, useKickLive } from '@/services/kick';
 import { openLink } from '@/utils/open-link';
 
-const ALL_IDS = games.map((g) => g.id);
+const ALL_TARGETS = catalogTargets(games.map((g) => g.id));
 
 /** Every live stream we can find, plus one-tap links to each game's live page on every platform. */
 export default function LiveScreen() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const [gameId, setGameId] = useState<string | null>(null);
-  const live = useKickLive(ALL_IDS, 5);
+  const live = useKickLive(ALL_TARGETS, 5);
 
   const streams = live.streams.filter((s) => !gameId || s.gameId === gameId);
   const total = live.streams.reduce((sum, s) => sum + s.viewers, 0);
@@ -78,8 +78,8 @@ export default function LiveScreen() {
 function GameLiveRow({ game }: { game: Game }) {
   const targets: { id: PlatformId; url: string }[] = [
     { id: 'twitch', url: links.twitch(game) },
-    { id: 'youtube', url: links.youtubeLive(game) },
-    { id: 'kick', url: links.kick(game) },
+    { id: 'youtube', url: links.youtubeLive(game.title) },
+    { id: 'kick', url: links.kick(game.kick) },
   ];
   return (
     <View style={styles.row}>

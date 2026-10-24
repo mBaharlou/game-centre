@@ -7,7 +7,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   useWindowDimensions,
   View,
   type NativeScrollEvent,
@@ -22,20 +21,18 @@ import { KickStreamCard } from '@/components/media-cards';
 import { Avatar, Chip, IconButton, PriceTag, SectionHeader } from '@/components/ui';
 import { AccentGradient, Colors, MaxContentWidth, Radius, Spacing, TabBarHeight } from '@/constants/theme';
 import { ALL_GENRES, games, matchesGenre, type Game } from '@/data/games';
-import { useKickLive } from '@/services/kick';
+import { catalogTargets, useKickLive } from '@/services/kick';
 import { useAuth } from '@/store/auth';
-import { useCart } from '@/store/cart';
+import { TrendingRow } from '@/components/trending';
 
-const ALL_IDS = games.map((g) => g.id);
+const ALL_TARGETS = catalogTargets(games.map((g) => g.id));
 
 export default function StoreScreen() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
-  const { cart } = useCart();
   const { user } = useAuth();
-  const live = useKickLive(ALL_IDS, 3);
+  const live = useKickLive(ALL_TARGETS, 3);
   const [genre, setGenre] = useState('All');
-  const [query, setQuery] = useState('');
   const [slide, setSlide] = useState(0);
 
   const contentWidth = Math.min(width, MaxContentWidth);
@@ -45,14 +42,7 @@ export default function StoreScreen() {
   const deals = games.filter((g) => g.discount > 0);
   const free = games.filter((g) => g.isFree);
 
-  const browse = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return games.filter(
-      (g) =>
-        matchesGenre(g, genre) &&
-        (!q || g.title.toLowerCase().includes(q) || g.developers.some((d) => d.toLowerCase().includes(q)) || g.genres.some((x) => x.toLowerCase().includes(q))),
-    );
-  }, [genre, query]);
+  const browse = useMemo(() => games.filter((g) => matchesGenre(g, genre)), [genre]);
 
   const onCarouselScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     setSlide(Math.round(e.nativeEvent.contentOffset.x / (cardWidth + Spacing.three)));
@@ -74,7 +64,7 @@ export default function StoreScreen() {
             <Text style={styles.brand}>Game Centre</Text>
             <Text style={styles.brandSub}>{user ? `Welcome back, ${user.displayName.split(' ')[0]}` : 'Watch the best. Then play.'}</Text>
           </View>
-          <IconButton icon="cart-outline" badge={cart.length} onPress={() => router.navigate('/cart')} />
+          <IconButton icon="magnify" onPress={() => router.navigate('/search')} />
           <Pressable onPress={() => router.navigate('/profile')} hitSlop={6}>
             {user ? (
               <Avatar name={user.displayName} color={user.avatarColor} size={42} />
@@ -85,6 +75,12 @@ export default function StoreScreen() {
             )}
           </Pressable>
         </View>
+
+        {/* Search */}
+        <Pressable onPress={() => router.navigate('/search')} style={styles.search}>
+          <MaterialCommunityIcons name="magnify" size={22} color={Colors.textMuted} />
+          <Text style={styles.searchPlaceholder}>Search any game: Fortnite, Call of Duty…</Text>
+        </Pressable>
 
         {/* Featured carousel */}
         <ScrollView
@@ -131,6 +127,19 @@ export default function StoreScreen() {
           </Pressable>
         )}
 
+        {/* Trending */}
+        <View style={styles.gap} />
+        <SectionHeader
+          title="Trending now"
+          subtitle="Most watched games on Kick right now"
+          action={
+            <Pressable onPress={() => router.navigate('/search')} hitSlop={8}>
+              <Text style={styles.seeAll}>More</Text>
+            </Pressable>
+          }
+        />
+        <TrendingRow />
+
         {/* Deals */}
         {deals.length > 0 && (
           <>
@@ -155,18 +164,7 @@ export default function StoreScreen() {
 
         {/* Browse */}
         <View style={styles.gap} />
-        <SectionHeader title="All games" subtitle={`${games.length} of the world's best games`} />
-        <View style={styles.search}>
-          <MaterialCommunityIcons name="magnify" size={20} color={Colors.textMuted} />
-          <TextInput
-            value={query}
-            onChangeText={setQuery}
-            placeholder="Search games, studios or genres"
-            placeholderTextColor={Colors.textMuted}
-            style={styles.searchInput}
-          />
-          {!!query && <MaterialCommunityIcons name="close-circle" size={18} color={Colors.textMuted} onPress={() => setQuery('')} />}
-        </View>
+        <SectionHeader title="Our picks" subtitle={`${games.length} of the world's best games, with full guides`} />
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={[styles.hRow, { gap: Spacing.two, marginBottom: Spacing.three }]}>
           {ALL_GENRES.map((g) => (
             <Chip key={g} label={g} active={g === genre} onPress={() => setGenre(g)} />
@@ -177,7 +175,7 @@ export default function StoreScreen() {
             <GameTile key={g.id} game={g} width={tileWidth} />
           ))}
         </View>
-        {browse.length === 0 && <Text style={styles.empty}>No games match your search.</Text>}
+        {browse.length === 0 && <Text style={styles.empty}>No games in this category yet. Try Search to find any game.</Text>}
       </View>
     </ScrollView>
   );
@@ -267,7 +265,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  searchInput: { flex: 1, color: Colors.text, fontSize: 15, outlineWidth: 0 },
+  searchPlaceholder: { flex: 1, color: Colors.textMuted, fontSize: 15 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three, paddingHorizontal: Spacing.three, rowGap: Spacing.four },
   empty: { color: Colors.textSecondary, textAlign: 'center', paddingVertical: Spacing.five },
 });

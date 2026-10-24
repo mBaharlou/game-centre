@@ -11,12 +11,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LiveBadge, PlatformBadge } from '@/components/badges';
 import { GameCover } from '@/components/game-cover';
 import { KickStreamCard } from '@/components/media-cards';
-import { Avatar, GradientButton, IconButton, PriceTag, SectionHeader } from '@/components/ui';
+import { Avatar, GradientButton, IconButton, SectionHeader } from '@/components/ui';
 import { Colors, MaxContentWidth, Radius, Spacing } from '@/constants/theme';
-import { formatCount, getGame, links, type Game } from '@/data/games';
+import { formatCount, formatPrice, links } from '@/data/games';
+import { accentFor, useGameDetails, type Art, type GameDetails } from '@/services/game-details';
 import { useKickLive, useKickPlayback } from '@/services/kick';
 import { useAuth } from '@/store/auth';
-import { useCart } from '@/store/cart';
 import { openLink } from '@/utils/open-link';
 
 // Trailers and live streams are HLS. Phones play it natively; most desktop browsers
@@ -27,6 +27,8 @@ const CAN_PLAY_HLS =
 type Params = {
   kind: 'trailer' | 'kick';
   gameId: string;
+  gameTitle?: string;
+  kick?: string;
   index?: string;
   channel?: string;
   title?: string;
@@ -40,22 +42,17 @@ export default function WatchScreen() {
   const params = useLocalSearchParams<Params>();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
-  const game = getGame(params.gameId);
+  const { details: game } = useGameDetails(params.gameId, { kickSlug: params.kick });
   const [trailerIndex, setTrailerIndex] = useState(Number(params.index ?? 0));
   const isKick = params.kind === 'kick';
   const kick = useKickPlayback(isKick ? params.channel : undefined);
 
-  if (!game) {
-    return (
-      <View style={[styles.screen, { alignItems: 'center', justifyContent: 'center' }]}>
-        <Text style={styles.sub}>This video is not available.</Text>
-      </View>
-    );
-  }
-
-  const trailer = game.trailers[trailerIndex];
+  const gameTitle = game?.title ?? params.gameTitle ?? '';
+  const art: Art = game ?? { title: gameTitle, accent: accentFor(gameTitle), images: {} };
+  const trailer = game?.trailers[trailerIndex];
   const source = isKick ? kick.url : trailer?.hls ?? null;
-  const fallbackUrl = isKick && params.channel ? links.kickChannel(params.channel) : links.steam(game);
+  const fallbackUrl =
+    isKick && params.channel ? links.kickChannel(params.channel) : game?.steamAppId ? links.steam(game.steamAppId) : links.youtube(`${gameTitle} trailer`);
   const contentWidth = Math.min(width, MaxContentWidth);
   const close = () => (router.canGoBack() ? router.back() : router.replace('/'));
 
@@ -73,7 +70,7 @@ export default function WatchScreen() {
               <ActivityIndicator color="#fff" size="large" />
             </View>
           ) : (
-            <Player key={source ?? 'none'} game={game} source={source} fallbackUrl={fallbackUrl} fallbackLabel={isKick ? 'Watch on Kick' : 'Watch on Steam'} poster={isKick ? null : trailer?.thumbnail} />
+            <Player key={source ?? 'none'} game={art} source={source} fallbackUrl={fallbackUrl} fallbackLabel={isKick ? 'Watch on Kick' : 'Watch on Steam'} poster={isKick ? null : trailer?.thumbnail} />
           )}
 
           <View style={styles.info}>
@@ -83,18 +80,19 @@ export default function WatchScreen() {
                 <Avatar name={params.username ?? '?'} uri={params.avatar || null} size={44} />
                 <View style={{ flex: 1 }}>
                   <Text style={styles.author}>{params.username}</Text>
-                  <Text style={styles.sub}>Streaming {game.title}</Text>
+                  <Text style={styles.sub}>Streaming {gameTitle}</Text>
                 </View>
                 <PlatformBadge platform="kick" />
               </Pressable>
             ) : (
               <Text style={styles.sub}>
-                {game.title} · {game.developers[0]}
+                {gameTitle}
+                {game?.developers[0] ? ` · ${game.developers[0]}` : ''}
               </Text>
             )}
           </View>
 
-          {!isKick && game.trailers.length > 1 && (
+          {!isKick && game && game.trailers.length > 1 && (
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.hRow}>
               {game.trailers.map((t, i) => (
                 <Pressable key={t.id} onPress={() => setTrailerIndex(i)} style={[styles.thumb, i === trailerIndex && styles.thumbActive]}>
@@ -108,16 +106,16 @@ export default function WatchScreen() {
             </ScrollView>
           )}
 
-          <BuyCard game={game} />
+          {game && <BuyCard game={game} />}
 
-          {isKick && <MoreLive game={game} currentChannel={params.channel} />}
+          {isKick && game?.kickSlug && <MoreLive game={game} currentChannel={params.channel} />}
         </View>
       </ScrollView>
     </View>
   );
 }
 
-function Player({ game, source, fallbackUrl, fallbackLabel, poster }: { game: Game; source: string | null; fallbackUrl: string; fallbackLabel: string; poster?: string | null }) {
+function Player({ game, source, fallbackUrl, fallbackLabel, poster }: { game: Art; source: string | null; fallbackUrl: string; fallbackLabel: string; poster?: string | null }) {
   const player = useVideoPlayer(source, (p) => {
     p.play();
   });
@@ -150,11 +148,11 @@ function Player({ game, source, fallbackUrl, fallbackLabel, poster }: { game: Ga
   );
 }
 
-function BuyCard({ game }: { game: Game }) {
-  const { cart, add } = useCart();
+function BuyCard({ game }: { game: GameDetails }) {
   const { owns } = useAuth();
-  const inCart = cart.includes(game.id);
   const isOwned = owns(game.id);
+  const price = game.isFree ? 'Free to play' : game.price ? formatPrice(game.price.final) : null;
+  const openBuy = () => router.push({ pathname: '/game/[id]', params: { id: game.id, tab: 'buy' } });
   return (
     <Pressable onPress={() => router.push({ pathname: '/game/[id]', params: { id: game.id } })}>
       <LinearGradient colors={[game.accent + '44', Colors.surface]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.buyCard}>
@@ -170,24 +168,16 @@ function BuyCard({ game }: { game: Game }) {
           <MaterialCommunityIcons name="chevron-right" size={24} color={Colors.textSecondary} />
         </View>
         <View style={styles.buyBottom}>
-          <PriceTag game={game} size="lg" />
-          <GradientButton
-            label={isOwned ? 'Owned' : inCart ? 'In cart' : game.isFree ? 'Get' : 'Buy now'}
-            icon={isOwned || inCart ? 'check' : 'cart-plus'}
-            disabled={isOwned}
-            onPress={() => {
-              add(game.id);
-              router.navigate('/cart');
-            }}
-          />
+          <Text style={styles.buyPrice}>{price ?? 'Compare stores'}</Text>
+          <GradientButton label={isOwned ? 'Owned' : 'Where to buy'} icon={isOwned ? 'check' : 'tag-search-outline'} onPress={openBuy} />
         </View>
       </LinearGradient>
     </Pressable>
   );
 }
 
-function MoreLive({ game, currentChannel }: { game: Game; currentChannel?: string }) {
-  const live = useKickLive([game.id], 8);
+function MoreLive({ game, currentChannel }: { game: GameDetails; currentChannel?: string }) {
+  const live = useKickLive([{ gameId: game.id, title: game.title, slug: game.kickSlug! }], 8);
   const others = live.streams.filter((s) => s.channel !== currentChannel);
   if (others.length === 0) return null;
   return (
@@ -225,5 +215,6 @@ const styles = StyleSheet.create({
   buyCover: { width: 64, aspectRatio: 2 / 3, borderRadius: 10 },
   buyEyebrow: { color: Colors.accent2, fontSize: 11, fontWeight: '900', letterSpacing: 1.2 },
   buyTitle: { color: Colors.text, fontSize: 20, fontWeight: '900' },
+  buyPrice: { color: Colors.text, fontSize: 20, fontWeight: '900' },
   buyBottom: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
 });

@@ -5,11 +5,9 @@ import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Colors, TabBarHeight } from '@/constants/theme';
-import { useCart } from '@/store/cart';
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
-  const { cart } = useCart();
 
   return (
     <Tabs
@@ -37,21 +35,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="search"
+        options={{
+          title: 'Search',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="magnify" size={26} color={color as string} />,
+        }}
+      />
+      <Tabs.Screen
         name="live"
         options={{
           title: 'Live',
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="broadcast" size={24} color={color as string} />,
-        }}
-      />
-      <Tabs.Screen
-        name="cart"
-        options={{
-          title: 'Cart',
-          tabBarBadge: cart.length || undefined,
-          tabBarBadgeStyle: { backgroundColor: Colors.accent, fontSize: 10, fontWeight: '900' },
-          tabBarIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons name={focused ? 'cart' : 'cart-outline'} size={24} color={color as string} />
-          ),
         }}
       />
       <Tabs.Screen
