@@ -7,20 +7,37 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { GameCover } from '@/components/game-cover';
 import { GradientButton, PriceTag } from '@/components/ui';
 import { Colors, MaxContentWidth, Radius, Spacing, TabBarHeight } from '@/constants/theme';
-import { finalPrice, formatPrice, getGame, type Game } from '@/data/games';
+import { formatPrice, getGame, type Game } from '@/data/games';
+import { useAuth, type Order } from '@/store/auth';
 import { useCart } from '@/store/cart';
 
 export default function CartScreen() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
-  const { cart, owned, remove, checkout } = useCart();
-  const [justBought, setJustBought] = useState(false);
+  const { cart, remove, clear } = useCart();
+  const { user, owns, purchase } = useAuth();
+  const [lastOrder, setLastOrder] = useState<Order | null>(null);
+  const [paying, setPaying] = useState(false);
 
   const items = cart.map(getGame).filter((g): g is Game => !!g);
-  const library = owned.map(getGame).filter((g): g is Game => !!g);
-  const subtotal = items.reduce((sum, g) => sum + g.price, 0);
-  const total = items.reduce((sum, g) => sum + finalPrice(g), 0);
+  const toBuy = items.filter((g) => !owns(g.id));
+  const subtotal = toBuy.reduce((sum, g) => sum + g.price, 0);
+  const total = toBuy.reduce((sum, g) => sum + g.finalPrice, 0);
   const contentWidth = Math.min(width, MaxContentWidth);
+
+  const checkout = async () => {
+    if (!user) {
+      router.push({ pathname: '/auth', params: { reason: 'checkout' } });
+      return;
+    }
+    setPaying(true);
+    const order = await purchase(toBuy.map((g) => ({ gameId: g.id, price: g.finalPrice })));
+    setPaying(false);
+    if (order) {
+      clear();
+      setLastOrder(order);
+    }
+  };
 
   return (
     <ScrollView
@@ -30,21 +47,26 @@ export default function CartScreen() {
       <View style={{ width: contentWidth, paddingHorizontal: Spacing.three }}>
         <Text style={styles.title}>Cart</Text>
 
-        {justBought && items.length === 0 && (
+        {lastOrder && items.length === 0 && (
           <View style={styles.success}>
-            <MaterialCommunityIcons name="check-decagram" size={26} color={Colors.success} />
+            <MaterialCommunityIcons name="check-decagram" size={28} color={Colors.success} />
             <View style={{ flex: 1 }}>
-              <Text style={styles.successTitle}>Purchase complete</Text>
-              <Text style={styles.muted}>Your games are in your library below.</Text>
+              <Text style={styles.successTitle}>Order #{lastOrder.id} complete</Text>
+              <Text style={styles.muted}>
+                {lastOrder.items.length} {lastOrder.items.length === 1 ? 'game' : 'games'} added to your library · {formatPrice(lastOrder.total)}
+              </Text>
             </View>
+            <Pressable onPress={() => router.navigate('/profile')} hitSlop={8}>
+              <Text style={styles.link}>Library</Text>
+            </Pressable>
           </View>
         )}
 
-        {items.length === 0 && !justBought && (
+        {items.length === 0 && !lastOrder && (
           <View style={styles.empty}>
             <MaterialCommunityIcons name="cart-outline" size={48} color={Colors.textMuted} />
             <Text style={styles.emptyTitle}>Your cart is empty</Text>
-            <Text style={styles.muted}>Watch the best players, then pick your next game.</Text>
+            <Text style={[styles.muted, { textAlign: 'center' }]}>Watch the best players, then pick your next game.</Text>
             <GradientButton label="Browse the store" icon="storefront-outline" onPress={() => router.navigate('/')} style={{ marginTop: Spacing.three }} />
           </View>
         )}
@@ -54,12 +76,12 @@ export default function CartScreen() {
             <View style={{ gap: Spacing.two, marginTop: Spacing.three }}>
               {items.map((g) => (
                 <View key={g.id} style={styles.item}>
-                  <GameCover game={g} iconSize={26} style={styles.cover} />
+                  <GameCover game={g} style={styles.cover} />
                   <View style={{ flex: 1, gap: 6 }}>
                     <Text style={styles.itemTitle}>{g.title}</Text>
-                    <PriceTag game={g} />
+                    {owns(g.id) ? <Text style={[styles.muted, { color: Colors.success }]}>Already in your library</Text> : <PriceTag game={g} />}
                   </View>
-                  <Pressable onPress={() => remove(g.id)} hitSlop={10} style={styles.remove}>
+                  <Pressable onPress={() => remove(g.id)} hitSlop={10} style={{ padding: 6 }}>
                     <MaterialCommunityIcons name="trash-can-outline" size={20} color={Colors.textSecondary} />
                   </Pressable>
                 </View>
@@ -68,37 +90,22 @@ export default function CartScreen() {
 
             <View style={styles.summary}>
               <Row label="Subtotal" value={formatPrice(subtotal)} />
-              {subtotal !== total && <Row label="Discounts" value={`-${formatPrice(subtotal - total)}`} accent />}
+              {subtotal !== total && <Row label="Steam discounts" value={`-${formatPrice(subtotal - total)}`} accent />}
               <View style={styles.divider} />
               <Row label="Total" value={formatPrice(total)} big />
+              {!user && (
+                <Text style={[styles.muted, { marginTop: 4 }]}>Sign in to buy. Your games are saved to your profile.</Text>
+              )}
               <GradientButton
-                label={total === 0 ? 'Add to library' : `Pay ${formatPrice(total)}`}
-                icon="lock-outline"
+                label={!user ? 'Sign in to buy' : paying ? 'Processing…' : total === 0 ? 'Add to library' : `Pay ${formatPrice(total)}`}
+                icon={user ? 'lock-outline' : 'account-arrow-right'}
+                disabled={paying || toBuy.length === 0}
                 style={{ marginTop: Spacing.three }}
-                onPress={() => {
-                  checkout();
-                  setJustBought(true);
-                }}
+                onPress={checkout}
               />
               <Text style={[styles.muted, { textAlign: 'center', marginTop: Spacing.two, fontSize: 12 }]}>
-                Demo checkout: no real payment is taken yet.
+                Test checkout: no real payment is taken yet.
               </Text>
-            </View>
-          </>
-        )}
-
-        {library.length > 0 && (
-          <>
-            <Text style={[styles.title, { fontSize: 24, marginTop: Spacing.five }]}>Your library</Text>
-            <View style={styles.libraryGrid}>
-              {library.map((g) => (
-                <Pressable key={g.id} style={styles.libraryItem} onPress={() => router.push({ pathname: '/game/[id]', params: { id: g.id } })}>
-                  <GameCover game={g} iconSize={40} style={styles.libraryCover} />
-                  <Text style={styles.itemTitle} numberOfLines={1}>
-                    {g.title}
-                  </Text>
-                </Pressable>
-              ))}
             </View>
           </>
         )}
@@ -120,6 +127,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: Colors.background },
   title: { color: Colors.text, fontSize: 34, fontWeight: '900', letterSpacing: -1 },
   muted: { color: Colors.textSecondary, fontSize: 14 },
+  link: { color: Colors.accent2, fontSize: 14, fontWeight: '800' },
   empty: { alignItems: 'center', gap: 8, paddingVertical: Spacing.six },
   emptyTitle: { color: Colors.text, fontSize: 18, fontWeight: '800', marginTop: Spacing.two },
   success: {
@@ -144,9 +152,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  cover: { width: 56, height: 70, borderRadius: 10 },
+  cover: { width: 56, aspectRatio: 2 / 3, borderRadius: 10 },
   itemTitle: { color: Colors.text, fontSize: 15, fontWeight: '800' },
-  remove: { padding: 6 },
   summary: {
     marginTop: Spacing.four,
     padding: Spacing.three,
@@ -160,7 +167,4 @@ const styles = StyleSheet.create({
   rowValue: { color: Colors.text, fontSize: 14, fontWeight: '700' },
   bigText: { color: Colors.text, fontSize: 20, fontWeight: '900' },
   divider: { height: 1, backgroundColor: Colors.border },
-  libraryGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three, marginTop: Spacing.three },
-  libraryItem: { width: '30%', gap: 6 },
-  libraryCover: { aspectRatio: 3 / 4, borderRadius: Radius.md },
 });

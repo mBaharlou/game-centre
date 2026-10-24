@@ -41,20 +41,24 @@ export function LiveBadge({ viewers }: { viewers?: number }) {
 
 export function PlatformBadge({ platform, label = true }: { platform: PlatformId; label?: boolean }) {
   const p = Platforms[platform];
+  const dark = platform === 'kick';
   return (
     <View style={[styles.platform, { backgroundColor: p.color }]}>
-      <MaterialCommunityIcons name={p.icon} size={12} color={platform === 'kick' ? '#000' : '#fff'} />
-      {label && <Text style={[styles.platformText, platform === 'kick' && { color: '#000' }]}>{p.name}</Text>}
+      <MaterialCommunityIcons name={p.icon} size={12} color={dark ? '#000' : '#fff'} />
+      {label && <Text style={[styles.platformText, dark && { color: '#000' }]}>{p.name}</Text>}
     </View>
   );
 }
 
-export function RankBadge({ rank }: { rank: number }) {
-  const top = rank <= 3;
+/** Metacritic score in the site's traffic-light colours. */
+export function MetacriticBadge({ score }: { score: number }) {
+  const color = score >= 75 ? '#66CC33' : score >= 50 ? '#FFCC33' : '#FF0000';
   return (
-    <View style={[styles.rank, top && { backgroundColor: Colors.gold }]}>
-      <MaterialCommunityIcons name="crown" size={11} color={top ? '#000' : Colors.gold} />
-      <Text style={[styles.rankText, top && { color: '#000' }]}>#{rank}</Text>
+    <View style={styles.meta}>
+      <View style={[styles.metaScore, { backgroundColor: color }]}>
+        <Text style={styles.metaScoreText}>{score}</Text>
+      </View>
+      <Text style={styles.metaLabel}>Metacritic</Text>
     </View>
   );
 }
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    backgroundColor: 'rgba(0,0,0,0.55)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     paddingHorizontal: 7,
     paddingVertical: 3,
     borderRadius: 6,
@@ -91,14 +95,8 @@ const styles = StyleSheet.create({
     borderRadius: Radius.pill,
   },
   platformText: { color: '#fff', fontSize: 10, fontWeight: '800' },
-  rank: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 3,
-    backgroundColor: 'rgba(0,0,0,0.55)',
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  rankText: { color: Colors.gold, fontSize: 11, fontWeight: '900' },
+  meta: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  metaScore: { minWidth: 28, height: 22, borderRadius: 5, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 },
+  metaScoreText: { color: '#000', fontSize: 13, fontWeight: '900' },
+  metaLabel: { color: Colors.textSecondary, fontSize: 12, fontWeight: '600' },
 });

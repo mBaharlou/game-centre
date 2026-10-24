@@ -1,0 +1,1526 @@
+{
+  "fetchedAt": "2026-10-23T23:49:07.455Z",
+  "apps": [
+    {
+      "appId": 1245620,
+      "name": "ELDEN RING",
+      "developers": [
+        "FromSoftware, Inc."
+      ],
+      "publishers": [
+        "FromSoftware, Inc.",
+        "Bandai Namco Entertainment"
+      ],
+      "releaseDate": "Feb 24, 2022",
+      "isFree": false,
+      "price": {
+        "initial": 59.99,
+        "final": 59.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action",
+        "RPG"
+      ],
+      "categories": [
+        "Single-player",
+        "Multi-player",
+        "PvP",
+        "Online PvP",
+        "Co-op",
+        "Online Co-op",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Camera Comfort",
+        "Custom Volume Controls",
+        "Playable without Timed Input",
+        "Save Anytime",
+        "Stereo Sound",
+        "Surround Sound",
+        "Steam Cloud",
+        "Family Sharing"
+      ],
+      "metacritic": 94,
+      "recommendations": 834612,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_943bf6fe62352757d9070c1d33e50b92fe8539f1.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_dcdac9e4b26ac0ee5248bfd2967d764fd00cdb42.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_3c41384a24d86dddd58a8f61db77f9dc0bfda8b5.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_e0316c76f8197405c1312d072b84331dd735d60b.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_ef61b771ee6b269b1f0cb484233e07a0bfb5f81b.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_b1b91299d7e4b94201ac840aa64de54d9f5cb7f3.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_510a02cf3045e841e180f2b77fb87545e0c8b59d.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/ss_c494372930ca791bdc6221eca134f2270fb2cb9f.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 256889452,
+          "name": "ELDEN RING - Accolades Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256889452/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1245620/468143/7a6be00f78fb0fd8b419e92cea72cc4a19ec45f8/1750650501/hls_264_master.m3u8?t=1716311566"
+        },
+        {
+          "id": 256864891,
+          "name": "ELDEN RING - Story Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256864891/5231d5fc8ff9010cc6b18d1905e05f2dfc330457/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1245620/424516/9e2f1e655055aaa387fb5987a893bc2990e18085/1750650297/hls_264_master.m3u8?t=1739917119"
+        },
+        {
+          "id": 257002650,
+          "name": "ELDEN RING Shadow of the Erdtree - Gameplay Reveal Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257002650/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1245620/665332/4021bcd03e70a49cb23b598f5407b8290152f9e2/1750650652/hls_264_master.m3u8?t=1709086258"
+        },
+        {
+          "id": 256875477,
+          "name": "ELDEN RING - Rise, Tarnished | Official Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256875477/8041f25c0a2422fe434c4ce158b729e565570de4/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1245620/442816/aa7a26b8b7da66bf324ce24555fe0848d4650711/1750650397/hls_264_master.m3u8?t=1739917121"
+        },
+        {
+          "id": 256839312,
+          "name": "ELDEN RING - Official Gameplay Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256839312/3bcf246a6f06cc165a6afb8b15db4626efe10fcf/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1245620/377844/2912096cfadf6d63b7a35b7e7bc4e488c91cb31e/1750649918/hls_264_master.m3u8?t=1739917125"
+        }
+      ]
+    },
+    {
+      "appId": 1086940,
+      "name": "Baldur's Gate 3",
+      "developers": [
+        "Larian Studios"
+      ],
+      "publishers": [
+        "Larian Studios"
+      ],
+      "releaseDate": "Aug 3, 2023",
+      "isFree": false,
+      "price": {
+        "initial": 59.99,
+        "final": 59.99,
+        "discount": 0
+      },
+      "genres": [
+        "Adventure",
+        "RPG",
+        "Strategy"
+      ],
+      "categories": [
+        "Single-player",
+        "Multi-player",
+        "Co-op",
+        "Online Co-op",
+        "LAN Co-op",
+        "Cross-Platform Multiplayer",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Adjustable Text Size",
+        "Camera Comfort",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Adjustable Difficulty",
+        "Playable without Timed Input",
+        "DualShock Controller Support",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Save Anytime",
+        "Stereo Sound",
+        "Subtitle Options",
+        "Surround Sound",
+        "Steam Cloud",
+        "Remote Play on TV",
+        "Remote Play Together",
+        "Family Sharing"
+      ],
+      "metacritic": 96,
+      "recommendations": 759581,
+      "systems": [
+        "windows",
+        "mac"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_c73bc54415178c07fef85f54ee26621728c77504.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_73d93bea842b93914d966622104dcb8c0f42972b.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_cf936d31061b58e98e0c646aee00e6030c410cda.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_b6a6ee6e046426d08ceea7a4506a1b5f44181543.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_6b8faba0f6831a406ce015648958da9612d14dbb.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_8fc5eba770b4a1639b31666908bdd2bbc1aa2ae4.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_31c13d137706fb4d9a4210513274a3ed9c3c7c96.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/ss_0efa1a469a37beeb4fd0cb8e16dc99bd36357dc4.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 256987424,
+          "name": "Baldur's Gate 3 - Accolades Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256987424/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1086940/637951/59ca25b847b0e471638d1e2474acf71b068d57f0/1750615003/hls_264_master.m3u8?t=1702007645"
+        },
+        {
+          "id": 256961600,
+          "name": "Baldur's Gate 3 - Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256961600/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1086940/593544/008e33be9c000c5fdb38e630f13b1d5917d4561d/1750615002/hls_264_master.m3u8?t=1695393579"
+        },
+        {
+          "id": 256957679,
+          "name": "Baldur's Gate 3 - Release Teaser",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256957679/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1086940/586640/b3d5692dc27af2874f96d23ff281523f26bd5476/1750614981/hls_264_master.m3u8?t=1692294107"
+        },
+        {
+          "id": 256952190,
+          "name": "Baldur's Gate 3 - First Look at the City",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256952190/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1086940/577019/052954500a03f7bfb69c9abf7c2969e00833b569/1750614972/hls_264_master.m3u8?t=1692294111"
+        },
+        {
+          "id": 256932354,
+          "name": "Baldur's Gate 3 - Release Date Reveal Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256932354/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1086940/542118/27157a92e289b26416759be7b45bdfcf159dfd49/1750614949/hls_264_master.m3u8?t=1692294115"
+        }
+      ]
+    },
+    {
+      "appId": 1091500,
+      "name": "Cyberpunk 2077",
+      "developers": [
+        "CD PROJEKT RED"
+      ],
+      "publishers": [
+        "CD PROJEKT RED"
+      ],
+      "releaseDate": "Dec 9, 2020",
+      "isFree": false,
+      "price": {
+        "initial": 59.99,
+        "final": 17.99,
+        "discount": 70
+      },
+      "genres": [
+        "RPG"
+      ],
+      "categories": [
+        "Single-player",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Adjustable Text Size",
+        "Camera Comfort",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Adjustable Difficulty",
+        "Playable without Timed Input",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Save Anytime",
+        "Stereo Sound",
+        "Subtitle Options",
+        "Surround Sound",
+        "Steam Cloud",
+        "HDR available",
+        "Family Sharing"
+      ],
+      "metacritic": 86,
+      "recommendations": 900950,
+      "systems": [
+        "windows",
+        "mac"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_2f649b68d579bf87011487d29bc4ccbfdd97d34f.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/900f9bda156599fcd235f08ffb64667f9baa1afe/ss_900f9bda156599fcd235f08ffb64667f9baa1afe.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/f678ed77c2fe7060ac9c64e32e1472e3ec3ab7dc/ss_f678ed77c2fe7060ac9c64e32e1472e3ec3ab7dc.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/0ed9487e305983d60646ba163a3d8970efb6b347/ss_0ed9487e305983d60646ba163a3d8970efb6b347.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_0e64170751e1ae20ff8fdb7001a8892fd48260e7.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/f39ac45fd0d29c687b0c822b704f93a0764ce3e0/ss_f39ac45fd0d29c687b0c822b704f93a0764ce3e0.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_af2804aa4bf35d4251043744412ce3b359a125ef.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_7924f64b6e5d586a80418c9896a1c92881a7905b.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257474176,
+          "name": "Cyberpunk 2077 | Broken Dreams | Edgerunners 2 Update Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257474176/d3648c90317ee936369fd886a02a0f54c0a86395/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1091500/319068602/a0e7ceceecf759bf446feac0658b6fe58a970b94/1792676918/hls_264_master.m3u8?t=1792682497"
+        },
+        {
+          "id": 257472497,
+          "name": "Cyberpunk 2077 | Edgerunners 2 Update Features Overview",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257472497/9c8a2eb8f10402ca68948d85c8cc95c5da5a92dc/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1091500/610694132/b86c1d064cf8dee0a53e186c4cdbdf89251cebed/1792586286/hls_264_master.m3u8?t=1792663566"
+        },
+        {
+          "id": 257082775,
+          "name": "Cyberpunk 2077: Ultimate Edition — City of Dreams",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257082775/885331d24a8e88a0a90903f588835ed38b2f82cf/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1091500/801198/1b8aa4d59e19e69218c59bf1a6d9d23daedb01ab/1750617889/hls_264_master.m3u8?t=1734434767"
+        },
+        {
+          "id": 256987122,
+          "name": "027_2_1_UpdateTrailer_EN_ESRB M_16x9_1080",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256987122/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1091500/637423/44479aeec630d03dd9af567048ac1d7f055d8d3c/1750617739/hls_264_master.m3u8?t=1701872775"
+        },
+        {
+          "id": 256983890,
+          "name": "001 BaseGame Accolades Trailer EN ESRB-M 16x9 1080",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256983890/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1091500/632017/2db7b2d525405284f2067818e73af9c4b41c0a93/1750617625/hls_264_master.m3u8?t=1700653190"
+        }
+      ]
+    },
+    {
+      "appId": 1174180,
+      "name": "Red Dead Redemption 2",
+      "developers": [
+        "Rockstar Games"
+      ],
+      "publishers": [
+        "Rockstar Games"
+      ],
+      "releaseDate": "Dec 5, 2019",
+      "isFree": false,
+      "price": {
+        "initial": 59.99,
+        "final": 59.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action",
+        "Adventure"
+      ],
+      "categories": [
+        "Single-player",
+        "Multi-player",
+        "PvP",
+        "Online PvP",
+        "Co-op",
+        "Online Co-op",
+        "Steam Achievements",
+        "In-App Purchases",
+        "Partial Controller Support",
+        "Remote Play on Phone",
+        "Remote Play on Tablet"
+      ],
+      "metacritic": 93,
+      "recommendations": 857003,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/ss_66b553f4c209476d3e4ce25fa4714002cc914c4f.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/ss_bac60bacbf5da8945103648c08d27d5e202444ca.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/ss_668dafe477743f8b50b818d5bbfcec669e9ba93e.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/ss_4ce07ae360b166f0f650e9a895a3b4b7bf15e34f.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/ss_d1a8f5a69155c3186c65d1da90491fcfd43663d9.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 256767979,
+          "name": "RDR2 Launch Trailer (US)",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256767979/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1174180/254050/b2cc520c692391e65f2d09067f95001dcf4b434d/1750634049/hls_264_master.m3u8?t=1574881964"
+        },
+        {
+          "id": 256767971,
+          "name": "RDR2 60 FPS Trailer (US)",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256767971/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1174180/254038/f9d6239440402cbc2d1a8dac68da112c9c7f45a9/1750634048/hls_264_master.m3u8?t=1574881973"
+        }
+      ]
+    },
+    {
+      "appId": 3240220,
+      "name": "Grand Theft Auto V Enhanced",
+      "developers": [
+        "Rockstar North"
+      ],
+      "publishers": [
+        "Rockstar Games"
+      ],
+      "releaseDate": "Mar 4, 2025",
+      "isFree": false,
+      "price": {
+        "initial": 29.99,
+        "final": 14.99,
+        "discount": 50
+      },
+      "genres": [
+        "Action",
+        "Adventure",
+        "Racing"
+      ],
+      "categories": [
+        "Single-player",
+        "Multi-player",
+        "PvP",
+        "Online PvP",
+        "Co-op",
+        "Online Co-op",
+        "Steam Achievements",
+        "In-App Purchases",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Partial Controller Support",
+        "Remote Play on Phone",
+        "Remote Play on Tablet"
+      ],
+      "metacritic": null,
+      "recommendations": 219763,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/d61184a98c1cf2db2b08b2999c04b0519e3615bb/ss_d61184a98c1cf2db2b08b2999c04b0519e3615bb.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/8340fd391012e12be7e4c02e65801a2648a6b60e/ss_8340fd391012e12be7e4c02e65801a2648a6b60e.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/f2e70b5823510daa062293ff0b03821e1dee2d37/ss_f2e70b5823510daa062293ff0b03821e1dee2d37.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/6959cc5d64cce82cb68a27457cfa46fb4d50f897/ss_6959cc5d64cce82cb68a27457cfa46fb4d50f897.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/0231bf16835cd4f6d83523d76aa8d91cb2dfef9b/ss_0231bf16835cd4f6d83523d76aa8d91cb2dfef9b.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/60690d0fdbd022ab1527ba6d080d42c1812a0f39/ss_60690d0fdbd022ab1527ba6d080d42c1812a0f39.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/cf15774bb38c9b74f9e98c985228510c97df80b6/ss_cf15774bb38c9b74f9e98c985228510c97df80b6.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/808b550269f898e227dae2c64b5e026f90da85f9/ss_808b550269f898e227dae2c64b5e026f90da85f9.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257247674,
+          "name": "A Safehouse in the Hills - ESRB",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257247674/6953f3f3d5ff4750a447fd604910cb5a2eb19a35/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/3240220/208073939/d61bc1dd4d822b890ff453501daf280979a71ed8/1765478586/hls_264_master.m3u8?t=1765479642"
+        },
+        {
+          "id": 257157934,
+          "name": "Money Fronts - EN ESRB",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257157934/bd30fb41945534af6642c4efc09f2acfc5ce86c5/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/3240220/116104983/fe16f0f0c0ef5657b97ab981a888e614fd1e8969/1750177642/hls_264_master.m3u8?t=1750182561"
+        },
+        {
+          "id": 257109733,
+          "name": "Oscar Guzman Flies Again",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257109733/50c6c9fd9b9e3bcac594b3b46d019076faf2dc78/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/3240220/844207/973b531959db4e15682893543d6a27a70e7e1eb3/1750825075/hls_264_master.m3u8?t=1741098100"
+        },
+        {
+          "id": 257100577,
+          "name": "Agents of Sabotage",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257100577/af4a4abfc36b956bd2fa2fd2ee5bade9be41c99a/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/3240220/832632/4b8d5f06cf0a13255e89153bd952e5c7c9d41fe1/1750825051/hls_264_master.m3u8?t=1740681447"
+        },
+        {
+          "id": 257107473,
+          "name": "Bottom Dollar Bounties",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257107473/b424a7e4752f2dda69ed50b8cb8ce5fdd1f00643/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/3240220/840633/811cbebcd754c5028b19dd7c353e0e30af4624d4/1750825072/hls_264_master.m3u8?t=1740681450"
+        }
+      ]
+    },
+    {
+      "appId": 292030,
+      "name": "The Witcher 3: Wild Hunt — Remastered",
+      "developers": [
+        "CD PROJEKT RED"
+      ],
+      "publishers": [
+        "CD PROJEKT RED"
+      ],
+      "releaseDate": "May 18, 2015",
+      "isFree": false,
+      "price": {
+        "initial": 49.99,
+        "final": 49.99,
+        "discount": 0
+      },
+      "genres": [
+        "RPG"
+      ],
+      "categories": [
+        "Single-player",
+        "Steam Achievements",
+        "Steam Trading Cards",
+        "Steam Workshop",
+        "Adjustable Text Size",
+        "Camera Comfort",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Adjustable Difficulty",
+        "Playable without Timed Input",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Save Anytime",
+        "Stereo Sound",
+        "Surround Sound",
+        "Partial Controller Support",
+        "Steam Cloud",
+        "Remote Play on Tablet",
+        "Remote Play on TV",
+        "HDR available",
+        "Family Sharing"
+      ],
+      "metacritic": 93,
+      "recommendations": 850130,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/f7f564ecedd09b3e503b071a637aeefdedbeedd8/ss_f7f564ecedd09b3e503b071a637aeefdedbeedd8.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/0a38e4d0d57f15934772dbe09b322d08132d5518/ss_0a38e4d0d57f15934772dbe09b322d08132d5518.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/19c03c2b997d3a393fc629fd42f55ddb4a3d8dd0/ss_19c03c2b997d3a393fc629fd42f55ddb4a3d8dd0.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/3a3f430982cc3bccac1633d3ea60a30bf3d1ae9e/ss_3a3f430982cc3bccac1633d3ea60a30bf3d1ae9e.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/78ecbfb8bc64b8e9d4a372f4a8ffa5069e9325d0/ss_78ecbfb8bc64b8e9d4a372f4a8ffa5069e9325d0.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/203487f667e4ac00baf482b1c93c87a2b830a6fc/ss_203487f667e4ac00baf482b1c93c87a2b830a6fc.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/bd815be52023e2632855e01d3d7ba813a0b8d1a3/ss_bd815be52023e2632855e01d3d7ba813a0b8d1a3.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/a8bb0ff704918927e07002cf0901d7195bb6a13e/ss_a8bb0ff704918927e07002cf0901d7195bb6a13e.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257439639,
+          "name": "The Witcher 3: Wild Hunt — Remastered | Official Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257439639/32f72964eceaa2ea37c3ab03dff903a45414a89b/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/292030/511051216/5bbe135e5caf9dce45b1fb09a9d76373fb8977b8/1790683068/hls_264_master.m3u8?t=1790693334"
+        },
+        {
+          "id": 257411256,
+          "name": "The Witcher 3: Wild Hunt — Remastered | Official Announcement Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257411256/858e1915d7356ec75fb05e394a5e291e65113296/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/292030/2130786463/c006ec919f670394ee3ee8eeeb7ce33460944f52/1787925173/hls_264_master.m3u8?t=1788333481"
+        }
+      ]
+    },
+    {
+      "appId": 730,
+      "name": "Counter-Strike 2",
+      "developers": [
+        "Valve"
+      ],
+      "publishers": [
+        "Valve"
+      ],
+      "releaseDate": "Aug 21, 2012",
+      "isFree": true,
+      "price": null,
+      "genres": [
+        "Action",
+        "Free To Play"
+      ],
+      "categories": [
+        "Multi-player",
+        "Cross-Platform Multiplayer",
+        "Steam Trading Cards",
+        "Steam Workshop",
+        "Steam Workshop",
+        "In-App Purchases",
+        "Adjustable Text Size",
+        "Camera Comfort",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Playable without Timed Input",
+        "Stereo Sound",
+        "Surround Sound",
+        "Valve Anti-Cheat enabled",
+        "Stats",
+        "Remote Play on Phone",
+        "Remote Play on Tablet",
+        "Remote Play on TV",
+        "Steam Timeline"
+      ],
+      "metacritic": null,
+      "recommendations": 5323394,
+      "systems": [
+        "windows",
+        "linux"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/9c8b8fd6ebb2c84a1c38541369e6c05db7f1fbe0/ss_9c8b8fd6ebb2c84a1c38541369e6c05db7f1fbe0.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/4ef95eed5fcd98c576bf13e024bc6c845b622132/ss_4ef95eed5fcd98c576bf13e024bc6c845b622132.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_13bb35638c0267759276f511ee97064773b37a51.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_0f8cf82d019c614760fd20801f2bb4001da7ea77.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_ef82850f036dac5772cb07dbc2d1116ea13eb163.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_76f6730dbb911650ba1f41c8e5b4bac638b5beea.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_808cdd373d78c3cf3a78e7026ebb1a15895e0670.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/ss_ef98db5d5a4d877531a5567df082b0fb62d75c80.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 256972298,
+          "name": "Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256972298/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/730/612468/aa5a28c78f12232e6b6839034550c28b162fad3e/1748810724/hls_264_master.m3u8?t=1696005467"
+        },
+        {
+          "id": 256970298,
+          "name": "Moving Beyond Tick Rate",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256970298/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/730/608984/a3ae9d5b8de21282056059ca5e851a063a253a55/1748810722/hls_264_master.m3u8?t=1696005475"
+        },
+        {
+          "id": 256969703,
+          "name": "Leveling Up",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256969703/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/730/607867/ed6e0afecb45c615095cf8d84cec9d31659a3cc7/1748810722/hls_264_master.m3u8?t=1696005483"
+        },
+        {
+          "id": 256969690,
+          "name": "Responsive Smokes",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256969690/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/730/607847/d73c6346bc3bf5dbc6d66a8f721bab640fa3d37c/1748810721/hls_264_master.m3u8?t=1696005491"
+        }
+      ]
+    },
+    {
+      "appId": 570,
+      "name": "Dota 2",
+      "developers": [
+        "Valve"
+      ],
+      "publishers": [
+        "Valve"
+      ],
+      "releaseDate": "Jul 9, 2013",
+      "isFree": true,
+      "price": null,
+      "genres": [
+        "Action",
+        "Strategy",
+        "Free To Play"
+      ],
+      "categories": [
+        "Multi-player",
+        "Co-op",
+        "Steam Trading Cards",
+        "Steam Workshop",
+        "SteamVR Collectibles",
+        "In-App Purchases",
+        "Camera Comfort",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Valve Anti-Cheat enabled",
+        "Steam Timeline"
+      ],
+      "metacritic": 90,
+      "recommendations": 14370,
+      "systems": [
+        "windows",
+        "mac",
+        "linux"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_ad8eee787704745ccdecdfde3a5cd2733704898d.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_7ab506679d42bfc0c0e40639887176494e0466d9.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_c9118375a2400278590f29a3537769c986ef6e39.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_f9ebafedaf2d5cfb80ef1f74baa18eb08cad6494.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_27b6345f22243bd6b885cc64c5cda74e4bd9c3e8.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_b33a65678dc71cc98df4890e22a89601ee56a918.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_d0f973ce376ca5b6c08e081cb035e86ced105fa9.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_1f3b5f5ccf8b159294914c3fe028128a787304b6.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 256692021,
+          "name": "Dota 2 - Join the Battle",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256692021/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/570/116737/313addee2092d0bd6f538d164610061ea8bbe79c/1749859757/hls_264_master.m3u8?t=1762820639"
+        },
+        {
+          "id": 256819789,
+          "name": "Dota 2 - Sizzle Reel",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256819789/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/570/343440/a4bddad5bacce0e8395f7458ef4d8d9bad3efca9/1749859790/hls_264_master.m3u8?t=1762820641"
+        },
+        {
+          "id": 2028243,
+          "name": "Dota 2 - The Greeviling",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2028243/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/570/10127/a886b09aeea73e11d5c7305afa4e68698976808c/1749859753/hls_264_master.m3u8?t=1762820644"
+        },
+        {
+          "id": 81026,
+          "name": "Dota 2 Gamescom Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/81026/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/570/5608/1f6692ca2b124c7ebdbea6933d1503172d53efd1/1749859891/hls_264_master.m3u8?t=1762820645"
+        },
+        {
+          "id": 2040250,
+          "name": "Dota 2 Reborn - Custom Games Are Here",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2040250/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/570/38097/c214c04b3ebc010db5db67457efc38b5a994d901/1749859753/hls_264_master.m3u8?t=1762820647"
+        }
+      ]
+    },
+    {
+      "appId": 1172470,
+      "name": "Apex Legends™",
+      "developers": [
+        "Respawn"
+      ],
+      "publishers": [
+        "Electronic Arts"
+      ],
+      "releaseDate": "Nov 4, 2020",
+      "isFree": true,
+      "price": null,
+      "genres": [
+        "Action",
+        "Adventure",
+        "Free To Play"
+      ],
+      "categories": [
+        "Multi-player",
+        "PvP",
+        "Online PvP",
+        "Co-op",
+        "Online Co-op",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "In-App Purchases",
+        "Chat Speech-to-text",
+        "Playable without Timed Input",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support"
+      ],
+      "metacritic": 88,
+      "recommendations": 1587,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/3fc2dfcf0e8d7d7202a3ca32ae26c7afaec723e2/ss_3fc2dfcf0e8d7d7202a3ca32ae26c7afaec723e2.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/d64ce54903a3ba6429c6e3189ad746a7db70ee3e/ss_d64ce54903a3ba6429c6e3189ad746a7db70ee3e.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/6593905f527d4b1bf01b0bb148b9c9a39616a2e4/ss_6593905f527d4b1bf01b0bb148b9c9a39616a2e4.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/d8a07de4444fb8f43ad19c7aa9e3fa8e26eb94d6/ss_d8a07de4444fb8f43ad19c7aa9e3fa8e26eb94d6.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/4a30ba1dd184e8ebdbab3814ea3726008647ea17/ss_4a30ba1dd184e8ebdbab3814ea3726008647ea17.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/f880e64654baad384f3afb9e4b0004e411770241/ss_f880e64654baad384f3afb9e4b0004e411770241.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257426789,
+          "name": "Apex Legends VS Street Fighter 6 Event WW",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257426789/b98e7f8ca2ed27df3326e4e5823ff5438767adf6/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1172470/343063211/62821b5e8c30fe0232997e3a83b36292aea323af/1789580842/hls_264_master.m3u8?t=1789582444"
+        },
+        {
+          "id": 257391801,
+          "name": "Apex Legends: Marked Gameplay Trailer EN  ",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257391801/a8d21c02f35b1aea10893708f9f744552f770377/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1172470/1182889611/d98a0365413af7dca2b67039b260d8849a97627d/1785867041/hls_264_master.m3u8?t=1786031865"
+        }
+      ]
+    },
+    {
+      "appId": 2358720,
+      "name": "Black Myth: Wukong",
+      "developers": [
+        "Game Science"
+      ],
+      "publishers": [
+        "Game Science"
+      ],
+      "releaseDate": "Aug 19, 2024",
+      "isFree": false,
+      "price": {
+        "initial": 59.99,
+        "final": 59.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
+      "categories": [
+        "Single-player",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Gamepad Recommended",
+        "Playable without Timed Input",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Stereo Sound",
+        "Surround Sound",
+        "Steam Cloud",
+        "Family Sharing"
+      ],
+      "metacritic": null,
+      "recommendations": 882943,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/ss_86c4b7462bba219a0d0b89931a35812b9f188976.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/ss_d9391ab31a4d15dddf7ba4949bfa44f5d9170580.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/ss_524a39da392ee83dde091033562bc719d46b5838.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/ss_968bbc9caceb7d798bd0c393e1e9b4c44ed6d835.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/ss_415397426d4c939ebb8a93ac66831f28ee7199be.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/ss_63477e8ce2c0582b81c6ed576377d78e692b5642.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257048125,
+          "name": "Black Myth: Wukong - Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257048125/5bd85986ed6b1545d91ceb84714dd06a952fa17f/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2358720/743632/6acf4311bb6a59d300b902ab6a3f445215089d9c/1750812851/hls_264_master.m3u8?t=1729236218"
+        },
+        {
+          "id": 257029344,
+          "name": "Black Myth: Wukong - Pre-Orders Now Available",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257029344/f33a1247a6929856238f8176f5cc30c75b84a865/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2358720/710907/cfac50d865dd4c081a67949bef11a498e5a2c67b/1750812850/hls_264_master.m3u8?t=1729236226"
+        },
+        {
+          "id": 257044448,
+          "name": "Black Myth: Wukong - Final Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257044448/14ee8023a01fd253fec9018e4d98e09aab09cbf4/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2358720/737384/f7e06da11f0edccfcc36f2ee28dad70d320b15a6/1750812851/hls_264_master.m3u8?t=1729236234"
+        },
+        {
+          "id": 256987088,
+          "name": "Black Myth: Wukong Release Date Trailer | The Game Awards 2023",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256987088/7dec31481e6e0ca24e37a6f45c7abdf4edde26d9/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2358720/637370/a11d3df06dd4d8a5c62221262fc33fafca80cd52/1750812850/hls_264_master.m3u8?t=1729236246"
+        },
+        {
+          "id": 256965216,
+          "name": "Black Myth: Wukong Gameplay | Gamescom ONL 2023",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256965216/813ef09701102d456493067cf39d407ea0bbe02a/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2358720/599863/2efe2fbdd78b7c51d6892169a0b75e8c47bd6633/1750812850/hls_264_master.m3u8?t=1729236249"
+        }
+      ]
+    },
+    {
+      "appId": 2322010,
+      "name": "God of War Ragnarök",
+      "developers": [
+        "Santa Monica Studio",
+        "Jetpack Interactive"
+      ],
+      "publishers": [
+        "PlayStation Publishing LLC"
+      ],
+      "releaseDate": "Sep 19, 2024",
+      "isFree": false,
+      "price": {
+        "initial": 59.99,
+        "final": 59.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
+      "categories": [
+        "Single-player",
+        "Steam Achievements",
+        "Full controller support",
+        "Adjustable Text Size",
+        "Camera Comfort",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Adjustable Difficulty",
+        "Narrated Game Menus",
+        "Playable without Timed Input",
+        "DualShock Controller Support",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Save Anytime",
+        "Steam Input API Support",
+        "Stereo Sound",
+        "Subtitle Options",
+        "Surround Sound",
+        "Steam Cloud",
+        "HDR available",
+        "Family Sharing"
+      ],
+      "metacritic": 90,
+      "recommendations": 33023,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_7c59382e67eadf779e0e15c3837ee91158237f11.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_05f27139b15c5410d07cd59b7b52adbdf73e13da.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_974a7b998c0c14da7fe52a342cf36c98850a57ac.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_78350297511e81f287b4bc361935efbc3016f6db.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_7cbcd6847cac4d2d42f496954d0df715c6af0b3a.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_c6240e5611e6aa1c2219dbf778f79b2b5244d912.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_5f1bca8b9b0de6e747f1849b0d459b9a6ce614e7.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_1848b58003fcc199092227f871770a216d9430f9.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257054534,
+          "name": "Launch Trailer (US-EN)",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257054534/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2322010/754785/cd4512509a851f1f5e98b3ddffdda87de8bac9f1/1750811709/hls_264_master.m3u8?t=1726759092"
+        }
+      ]
+    },
+    {
+      "appId": 553850,
+      "name": "HELLDIVERS™ 2",
+      "developers": [
+        "Arrowhead Game Studios"
+      ],
+      "publishers": [
+        "PlayStation Publishing LLC"
+      ],
+      "releaseDate": "Feb 8, 2024",
+      "isFree": false,
+      "price": {
+        "initial": 39.99,
+        "final": 39.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action"
+      ],
+      "categories": [
+        "Multi-player",
+        "Co-op",
+        "Online Co-op",
+        "Steam Achievements",
+        "In-App Purchases",
+        "Adjustable Text Size",
+        "Camera Comfort",
+        "Chat Speech-to-text",
+        "Chat Text-to-speech",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Adjustable Difficulty",
+        "Narrated Game Menus",
+        "Playable without Timed Input",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Stereo Sound",
+        "Subtitle Options",
+        "Surround Sound",
+        "Partial Controller Support",
+        "Family Sharing"
+      ],
+      "metacritic": null,
+      "recommendations": 847359,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/aed08979e15f54798f287dd8820fb5838476b5fa/ss_aed08979e15f54798f287dd8820fb5838476b5fa.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/71ef7c65fcf63ff974ce42150190c0420c66c72b/ss_71ef7c65fcf63ff974ce42150190c0420c66c72b.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/6c8b61a7c63479b6f526d285af6687a362d5d7ae/ss_6c8b61a7c63479b6f526d285af6687a362d5d7ae.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/ss_0c79f56fc7be1bd0102f2ca1c92c8f0900daf4fb.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/ss_33e684e9cb2517af1599f0ca2b57d65ee82c2e51.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/ss_8949ed7dd24a02d5ea13b08fc5c04fab400dc4bd.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/ss_50afbbc4d811c38fe9f64c1fc8d7eb9d9da6d24c.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/ss_cb276fe9f0b09683bdbc496f82b405dbe0ffa1f1.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257416388,
+          "name": "Devoid of Liberty",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257416388/40bb356adaabd25fd73488264840abe84ac84718/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/553850/97059895/43cbd15ee5e1bd1be5aef57dd4a093d448e2d7f5/1788431043/hls_264_master.m3u8?t=1788431411"
+        },
+        {
+          "id": 257391604,
+          "name": "Face the unknown",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257391604/01449b1c2230f3901f09313fcbbf813f45edde93/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/553850/1066241062/9d085e63a7061466f8db4a78f6dab24e1df5de9a/1785860021/hls_264_master.m3u8?t=1786525386"
+        },
+        {
+          "id": 256994373,
+          "name": "Launch Trailer (US-EN)",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256994373/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/553850/650713/095c6d5ae33c146b807f4394fa3010847aec1c1e/1750550195/hls_264_master.m3u8?t=1756923474"
+        },
+        {
+          "id": 256992403,
+          "name": "PC Trailer (US-EN)",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256992403/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/553850/646934/aadc3791b619905f24fab23a9896015c1cb5a628/1750550851/hls_264_master.m3u8?t=1736451730"
+        },
+        {
+          "id": 256957675,
+          "name": "Co-op & Combat Trailer (US-EN)",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256957675/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/553850/586622/3bec9e0e2b094162eabe087ca13ff91da51ea120/1750550136/hls_264_master.m3u8?t=1691444486"
+        }
+      ]
+    },
+    {
+      "appId": 1145350,
+      "name": "Hades II",
+      "developers": [
+        "Supergiant Games"
+      ],
+      "publishers": [
+        "Supergiant Games"
+      ],
+      "releaseDate": "Sep 25, 2025",
+      "isFree": false,
+      "price": {
+        "initial": 29.99,
+        "final": 29.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action",
+        "Indie",
+        "RPG"
+      ],
+      "categories": [
+        "Single-player",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Captions available",
+        "DualShock Controller Support",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Steam Cloud",
+        "Family Sharing"
+      ],
+      "metacritic": 94,
+      "recommendations": 115444,
+      "systems": [
+        "windows",
+        "mac"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_ef0f63061d0a0a9a7e46f3b84f125d25330e8f19.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_f28befd916e59b8bf0a8a801b8a498b8adaa01eb.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_b88cb7b48a86f07a7288bf37141f6558279f9bfc.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_c8d2b18451a2cc4d5b4fdd78ed84a5e64e051eac.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_f366f20f4fb699f6735581e04c7c45a1ef7bd1b8.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_47e14ed55ac7f1bf9266b2cd5b3e4d9eae0ca54c.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_295de30c8ec9fc82b73f226e68dd8b7fa8b07a62.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_93a2b3a39788031aac115b2edeebcefe585d6c8d.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257204779,
+          "name": "Hades II – v1.0 Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257204779/2f6767807df172946f5d638093dcc1c933eb24bb/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1145350/1067641820/dfba9c6a8b09f5bd9b323d6e699ac685065b93d3/1758924611/hls_264_master.m3u8?t=1758942439"
+        },
+        {
+          "id": 257206304,
+          "name": "Hades II – v1.0 Showcase ",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257206304/15bba1cdfa1aa30b3b772c1c5535e1c6bf9d9fc1/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1145350/1078171228/d92eb59e06a0bc11acbab62a2fcc3981383b80fa/1758820310/hls_264_master.m3u8?t=1758942440"
+        },
+        {
+          "id": 256919374,
+          "name": "Hades II Coming Soon",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256919374/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1145350/519255/5ca763163ded88a590accd47a774c99b9deec03c/1750627491/hls_264_master.m3u8?t=1715021708"
+        },
+        {
+          "id": 257099837,
+          "name": "Hades II Warsong Update",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257099837/7f2156a64f8c06471e2538f1a9b86e7c00d9174c/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1145350/831414/c475e29924acd1c3b6f49a8231230834e7e52d05/1750627511/hls_264_master.m3u8?t=1750178949"
+        },
+        {
+          "id": 257065656,
+          "name": "Hades II Olympic Update",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257065656/7da92850173b26004fce56641e25711a42b96a2b/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1145350/772664/5050056d051c58906915540f8cb0f172eab1f73e/1750627505/hls_264_master.m3u8?t=1729112202"
+        }
+      ]
+    },
+    {
+      "appId": 413150,
+      "name": "Stardew Valley",
+      "developers": [
+        "ConcernedApe"
+      ],
+      "publishers": [
+        "ConcernedApe"
+      ],
+      "releaseDate": "Feb 26, 2016",
+      "isFree": false,
+      "price": {
+        "initial": 14.99,
+        "final": 14.99,
+        "discount": 0
+      },
+      "genres": [
+        "Indie",
+        "RPG",
+        "Simulation"
+      ],
+      "categories": [
+        "Single-player",
+        "Multi-player",
+        "Co-op",
+        "Online Co-op",
+        "LAN Co-op",
+        "Shared/Split Screen Co-op",
+        "Shared/Split Screen",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Steam Cloud",
+        "Remote Play on Phone",
+        "Remote Play on Tablet",
+        "Remote Play Together",
+        "Family Sharing"
+      ],
+      "metacritic": 89,
+      "recommendations": 901512,
+      "systems": [
+        "windows",
+        "mac",
+        "linux"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_b887651a93b0525739049eb4194f633de2df75be.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_9ac899fe2cda15d48b0549bba77ef8c4a090a71c.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_4fa0866709ede3753fdf2745349b528d5e8c4054.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_d836f0a5b0447fb6a2bdb0a6ac5f954949d3c41e.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_10628b4a811c0a925a1433d4323f78c7017dbbe4.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_6422d297347258086b389e3d5d9c0e0c698312e4.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_a3ddf22cda3bd722df77dbdd58dbec393906b654.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_30aeedc47e731232ade368831a598d6545346f70.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 256815967,
+          "name": "Stardew Valley Trailer 1080p",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256815967/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/413150/336433/0058de516bf7c46986ba1e81172ffd3c2ca6cad7/1750527541/hls_264_master.m3u8?t=1754692862"
+        }
+      ]
+    },
+    {
+      "appId": 814380,
+      "name": "Sekiro™: Shadows Die Twice - GOTY Edition",
+      "developers": [
+        "FromSoftware, Inc."
+      ],
+      "publishers": [
+        "Activision (Excluding Japan and Asia)",
+        "FromSoftware, Inc. (Japan)",
+        "方块游戏 (Asia)"
+      ],
+      "releaseDate": "Mar 21, 2019",
+      "isFree": false,
+      "price": {
+        "initial": 59.99,
+        "final": 59.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action",
+        "Adventure"
+      ],
+      "categories": [
+        "Single-player",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Steam Cloud",
+        "Remote Play on Tablet",
+        "Remote Play on TV",
+        "Family Sharing"
+      ],
+      "metacritic": 88,
+      "recommendations": 261389,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/ss_0f7b0f8ed9ffc49aba26f9328caa9a1d59ad60f0.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/ss_2685dd844a2a523b6c7ec207d46a538db6a908cd.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/ss_15f0e9982621aed44900215ad283811af0779b1d.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/ss_1e6f5540866a5564d65df915c22fe1e57e336a6f.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/ss_3d6b38c382c0eafb02dc90d22f33fd292e4e5cf3.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 256806899,
+          "name": "Sekiro™: Shadows Die Twice - Game of the Year Edition",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256806899/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/814380/322401/63cf1fdf9c16536f04b08a5b1939909f7a99a340/1750586450/hls_264_master.m3u8?t=1603837979"
+        },
+        {
+          "id": 256770769,
+          "name": "Sekiro: Shadows Die Twice - Accolades Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256770769/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/814380/258713/980f4296ce65afd30dae955677b95c54fb7f0aa5/1750586418/hls_264_master.m3u8?t=1576898083"
+        },
+        {
+          "id": 256745700,
+          "name": "Sekiro: Shadows Die Twice - Gameplay 101 Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256745700/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/814380/214066/8028d7d95132f516fe298ed58b88905e2a33757c/1750586397/hls_264_master.m3u8?t=1553549458"
+        },
+        {
+          "id": 256745081,
+          "name": "Sekiro: Shadows Die Twice - Launch Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256745081/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/814380/212986/8ba6fe8bdcdc79872f903015b5d52e1121c1fdee/1750586380/hls_264_master.m3u8?t=1553549470"
+        },
+        {
+          "id": 256742444,
+          "name": "Sekiro: Shadows Die Twice - Story Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256742444/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/814380/208295/ced2c5a3207e2bb3e6c8551ee51398cf0c53006d/1750586369/hls_264_master.m3u8?t=1553549486"
+        }
+      ]
+    },
+    {
+      "appId": 1030300,
+      "name": "Hollow Knight: Silksong",
+      "developers": [
+        "Team Cherry"
+      ],
+      "publishers": [
+        "Team Cherry"
+      ],
+      "releaseDate": "Sep 4, 2025",
+      "isFree": false,
+      "price": {
+        "initial": 19.99,
+        "final": 19.99,
+        "discount": 0
+      },
+      "genres": [
+        "Action",
+        "Adventure",
+        "Indie"
+      ],
+      "categories": [
+        "Single-player",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Camera Comfort",
+        "Gamepad Recommended",
+        "Keyboard Only Option",
+        "Playable without Timed Input",
+        "DualShock Controller Support",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Save Anytime",
+        "Stereo Sound",
+        "Steam Cloud",
+        "Remote Play on TV",
+        "Family Sharing"
+      ],
+      "metacritic": 90,
+      "recommendations": 390236,
+      "systems": [
+        "windows",
+        "mac",
+        "linux"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/26950369fe4b03c2268620eb9815c8a246aa0b06/ss_26950369fe4b03c2268620eb9815c8a246aa0b06.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/09ccaa6c16f158f9df8298feb5d196098506a028/ss_09ccaa6c16f158f9df8298feb5d196098506a028.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/d1a893ec6357b347a55ed929833ba793b57a79d2/ss_d1a893ec6357b347a55ed929833ba793b57a79d2.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/856e33e755a0b9a785c645d116036516ea08812b/ss_856e33e755a0b9a785c645d116036516ea08812b.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/8e09f2b2eedd3fa9b4479dd5c26d8bdf60562478/ss_8e09f2b2eedd3fa9b4479dd5c26d8bdf60562478.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/d907d0cc2b10b5ea4788b8d502cc27787d520c1d/ss_d907d0cc2b10b5ea4788b8d502cc27787d520c1d.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/1b93e8131cb6f4bd9e3791a606d0da8f9ee78276/ss_1b93e8131cb6f4bd9e3791a606d0da8f9ee78276.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/d20b045b8bdaea6ace2ca4170875772b439c2c2e/ss_d20b045b8bdaea6ace2ca4170875772b439c2c2e.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257186996,
+          "name": "Release Trailer English",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257186996/ac1c4277feccd41b0866ffec5d0d40b605df1851/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1030300/970174968/f2c514c96548048dd1dca6ef500877916b75fe5a/1755841475/hls_264_master.m3u8?t=1764916585"
+        },
+        {
+          "id": 256742997,
+          "name": "Reveal Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256742997/movie.293x165.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/1030300/209267/a7f0f21deb650c2ebbd0e7a9bcd44a1b8c8b5868/1751178761/hls_264_master.m3u8?t=1755838174"
+        }
+      ]
+    },
+    {
+      "appId": 2246340,
+      "name": "Monster Hunter Wilds",
+      "developers": [
+        "CAPCOM Co., Ltd."
+      ],
+      "publishers": [
+        "CAPCOM Co., Ltd."
+      ],
+      "releaseDate": "Feb 27, 2025",
+      "isFree": false,
+      "price": {
+        "initial": 39.99,
+        "final": 29.99,
+        "discount": 25
+      },
+      "genres": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
+      "categories": [
+        "Single-player",
+        "Multi-player",
+        "Co-op",
+        "Online Co-op",
+        "Cross-Platform Multiplayer",
+        "Steam Achievements",
+        "Full controller support",
+        "Steam Trading Cards",
+        "Adjustable Text Size",
+        "Camera Comfort",
+        "Color Alternatives",
+        "Custom Volume Controls",
+        "Keyboard Only Option",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "Steam Input API Support",
+        "Stereo Sound",
+        "Subtitle Options",
+        "Surround Sound",
+        "Steam Cloud",
+        "HDR available",
+        "Family Sharing"
+      ],
+      "metacritic": null,
+      "recommendations": 203413,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_31b5597fecf2d9a2904bc9bbf8011aacb18143db.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_9245c1ede8c3fc2cd65e4890a74a01ef50b726da.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_c722e74607ffda9a1472093ccc934f1bdde10ab8.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_d439e321350c004c4d866c248019aefdc6a50600.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_fa2361b39da8e8bde3cbc282879de97f2f3e57af.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_c1dd8c8af4e0fd3bb233888b4155d94f7988debd.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_c1c31d5252307bd9e331f21509c8fd8dc39c2d61.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_5b3101fafdfb638384a5cc0024a9801fe6af06b6.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257283350,
+          "name": "08_MHWilds_TU4.5_Multi_EN-US_ESRB_1080p",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257283350/f56fc8e58afb3467141df79a3f449fab20649949/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2246340/1302522023/a82634e9f0d94dfa8714df0f49eb06b52f1d4141/1770702331/hls_264_master.m3u8?t=1770710675"
+        },
+        {
+          "id": 257247855,
+          "name": "07_MHWilds_TU4_Multi_EN-US_ESRB_1080p",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257247855/a65be8c16e8d198844dfe817412b441c5d1f352e/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2246340/1712528059/5f2ea71813e70496017835eacf5c6a692c51d694/1765506411/hls_264_master.m3u8?t=1765526400"
+        },
+        {
+          "id": 257205917,
+          "name": "07_MHWilds_TU3_Multi_EN-US_ESRB_1080p",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257205917/9dfa3c12cb51aefbc31d546a232181be24c19322/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2246340/579320992/dc9315ec7e14950467a8e26e21a8a8a614da7f6d/1758776323/hls_264_master.m3u8?t=1758783949"
+        },
+        {
+          "id": 257162156,
+          "name": "07_MHWilds_TU2_Multi_EN-US_ESRB_1080p",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257162156/7abdbb66cc73fe48c5d83286a334fb9e83c6bbe5/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2246340/46243492/f084146664e26fb528c7cf2752cc3f32117ad7e4/1750990489/hls_264_master.m3u8?t=1750999186"
+        },
+        {
+          "id": 257118559,
+          "name": "07_MHWilds_TU1_Multi_US_1080p",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257118559/d9f67f524a5de835fc81740acae8e4178c4dc8d9/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2246340/857809/52bde5e6b2f90e92134bf224f1fd247654224ef8/1748034680/hls_264_master.m3u8?t=1742961800"
+        }
+      ]
+    },
+    {
+      "appId": 2767030,
+      "name": "Marvel Rivals",
+      "developers": [
+        "NetEase Games"
+      ],
+      "publishers": [
+        "NetEase Games"
+      ],
+      "releaseDate": "Dec 5, 2024",
+      "isFree": true,
+      "price": null,
+      "genres": [
+        "Action",
+        "Adventure",
+        "Casual",
+        "Massively Multiplayer",
+        "Racing",
+        "RPG",
+        "Strategy",
+        "Free To Play"
+      ],
+      "categories": [
+        "Multi-player",
+        "PvP",
+        "Online PvP",
+        "Co-op",
+        "Online Co-op",
+        "Cross-Platform Multiplayer",
+        "Steam Achievements",
+        "Full controller support",
+        "In-App Purchases",
+        "DualShock Controller Support",
+        "DualShock Controller Support",
+        "DualSense Controller Support",
+        "DualSense Controller Support",
+        "Family Sharing"
+      ],
+      "metacritic": null,
+      "recommendations": null,
+      "systems": [
+        "windows"
+      ],
+      "images": {
+        "header": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/header.jpg",
+        "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/library_600x900.jpg",
+        "hero": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/library_hero.jpg"
+      },
+      "screenshots": [
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/a42d038cf0add8028021781bd18c3a7452220236/ss_a42d038cf0add8028021781bd18c3a7452220236.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/34cd58834c8f6a6c3a08ccf24848d0daf8b7d60d/ss_34cd58834c8f6a6c3a08ccf24848d0daf8b7d60d.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/5d74010ff9fe5c67c99e3ec4afc4ebce926fe780/ss_5d74010ff9fe5c67c99e3ec4afc4ebce926fe780.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/b217fd8db7e9f919e5d30f0f8997f505e0d516f5/ss_b217fd8db7e9f919e5d30f0f8997f505e0d516f5.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/03cfa6d467966c0d7a4035f091c7d2a495bc7142/ss_03cfa6d467966c0d7a4035f091c7d2a495bc7142.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/05c3266777dfa88b7b13742c72088a6431eea474/ss_05c3266777dfa88b7b13742c72088a6431eea474.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/0b7cb73d511f327e3552750b76baf08daf0b5542/ss_0b7cb73d511f327e3552750b76baf08daf0b5542.1920x1080.jpg",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/df4df5542db4d8d89bcf7588a5cc5d2f383d420b/ss_df4df5542db4d8d89bcf7588a5cc5d2f383d420b.1920x1080.jpg"
+      ],
+      "trailers": [
+        {
+          "id": 257453703,
+          "name": "Path to Doomsday - Avengers: Infinity War | New PvP Mode Trailer | Marvel Rivals",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257453703/c8377c6710a6226952a19c8663b807987b264090/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2767030/838245032/e9ce45a69f675a9b5580cd75e84610098c4c9d0c/1791528757/hls_264_master.m3u8?t=1791536404"
+        },
+        {
+          "id": 257422551,
+          "name": "Butcher's Blasphemy | Marvel Rivals Season 10 Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257422551/bead0ffca6bf14f64db32a87304c0c4b83301b0e/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2767030/928852697/63c5517ad25d8b7da1fbfcfbb7f825c96e0dba66/1789112624/hls_264_master.m3u8?t=1789117455"
+        },
+        {
+          "id": 257393533,
+          "name": "The Hood: The World is His | Character Reveal Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257393533/1ff19e082753db3999fa997c1761e72e69ba6f54/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2767030/1844208219/d56e70fe46d51ca0616ed5bfc4dbc9636fb94730/1786091746/hls_264_master.m3u8?t=1786093206"
+        },
+        {
+          "id": 257374355,
+          "name": "The Mystery of Thebes | Marvel Rivals Season 9 Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257374355/d467b306e7086b1cbbda5172eee114d2498cf442/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2767030/1236067204/c507e58cb5256d2bc49e49edd7dc2496954795bf/1783667197/hls_264_master.m3u8?t=1783674084"
+        },
+        {
+          "id": 257356726,
+          "name": "Cyclops: The Fearless Leader | Character Reveal Trailer",
+          "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257356726/8581ebdfafabb0e417a50f4a0a76103ea287285d/movie_600x337.jpg",
+          "hls": "https://video.akamai.steamstatic.com/store_trailers/2767030/1254021000/9f279b16856fc61c926c4ae95d4c4db5712c4f99/1781254594/hls_264_master.m3u8?t=1783674085"
+        }
+      ]
+    }
+  ]
+}

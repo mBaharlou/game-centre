@@ -15,36 +15,42 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { LiveBadge } from '@/components/badges';
+import { MetacriticBadge } from '@/components/badges';
 import { GameCover } from '@/components/game-cover';
-import { GameRow } from '@/components/game-row';
-import { StreamCard } from '@/components/media-cards';
-import { Chip, IconButton, PriceTag, SectionHeader } from '@/components/ui';
+import { GameTile } from '@/components/game-row';
+import { KickStreamCard } from '@/components/media-cards';
+import { Avatar, Chip, IconButton, PriceTag, SectionHeader } from '@/components/ui';
 import { AccentGradient, Colors, MaxContentWidth, Radius, Spacing, TabBarHeight } from '@/constants/theme';
-import { games, streams, streamsFor, viewersFor, type Game } from '@/data/games';
+import { ALL_GENRES, games, matchesGenre, type Game } from '@/data/games';
+import { useKickLive } from '@/services/kick';
+import { useAuth } from '@/store/auth';
 import { useCart } from '@/store/cart';
 
-const GENRES = ['All', 'Action RPG', 'Shooter', 'Racing', 'Strategy', 'Horror', 'Cozy'];
+const ALL_IDS = games.map((g) => g.id);
 
 export default function StoreScreen() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { cart } = useCart();
+  const { user } = useAuth();
+  const live = useKickLive(ALL_IDS, 3);
   const [genre, setGenre] = useState('All');
   const [query, setQuery] = useState('');
   const [slide, setSlide] = useState(0);
 
   const contentWidth = Math.min(width, MaxContentWidth);
   const cardWidth = contentWidth - Spacing.three * 2;
+  const tileWidth = (contentWidth - Spacing.three * 3) / 2;
   const featured = games.filter((g) => g.featured);
-  const liveNow = [...streams].sort((a, b) => b.viewers - a.viewers).slice(0, 8);
+  const deals = games.filter((g) => g.discount > 0);
+  const free = games.filter((g) => g.isFree);
 
   const browse = useMemo(() => {
     const q = query.trim().toLowerCase();
     return games.filter(
       (g) =>
-        (genre === 'All' || g.genres.includes(genre)) &&
-        (!q || g.title.toLowerCase().includes(q) || g.genres.some((x) => x.toLowerCase().includes(q))),
+        matchesGenre(g, genre) &&
+        (!q || g.title.toLowerCase().includes(q) || g.developers.some((d) => d.toLowerCase().includes(q)) || g.genres.some((x) => x.toLowerCase().includes(q))),
     );
   }, [genre, query]);
 
@@ -56,6 +62,7 @@ export default function StoreScreen() {
     <ScrollView
       style={styles.screen}
       contentContainerStyle={[styles.content, { paddingTop: insets.top + Spacing.two, paddingBottom: TabBarHeight + insets.bottom + Spacing.five }]}
+      keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}>
       <View style={{ width: contentWidth }}>
         {/* Top bar */}
@@ -65,15 +72,23 @@ export default function StoreScreen() {
           </LinearGradient>
           <View style={{ flex: 1 }}>
             <Text style={styles.brand}>Game Centre</Text>
-            <Text style={styles.brandSub}>Watch the best. Then play.</Text>
+            <Text style={styles.brandSub}>{user ? `Welcome back, ${user.displayName.split(' ')[0]}` : 'Watch the best. Then play.'}</Text>
           </View>
           <IconButton icon="cart-outline" badge={cart.length} onPress={() => router.navigate('/cart')} />
+          <Pressable onPress={() => router.navigate('/profile')} hitSlop={6}>
+            {user ? (
+              <Avatar name={user.displayName} color={user.avatarColor} size={42} />
+            ) : (
+              <View style={styles.signInPill}>
+                <Text style={styles.signInText}>Sign in</Text>
+              </View>
+            )}
+          </Pressable>
         </View>
 
         {/* Featured carousel */}
         <ScrollView
           horizontal
-          pagingEnabled={false}
           snapToInterval={cardWidth + Spacing.three}
           decelerationRate="fast"
           showsHorizontalScrollIndicator={false}
@@ -90,73 +105,100 @@ export default function StoreScreen() {
           ))}
         </View>
 
-        {/* Live now */}
+        {/* Live on Kick */}
         <SectionHeader
           title="Live right now"
-          subtitle="Top players on Twitch, YouTube & Kick"
+          subtitle="Real streams from Kick, most viewers first"
           action={
             <Pressable onPress={() => router.navigate('/live')} hitSlop={8}>
-              <Text style={styles.seeAll}>See all</Text>
+              <Text style={styles.seeAll}>All live</Text>
             </Pressable>
           }
         />
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: Spacing.three, gap: Spacing.three }}>
-          {liveNow.map((s) => (
-            <StreamCard key={s.id} stream={s} width={270} showGame />
+        {live.streams.length > 0 ? (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.hRow}>
+            {live.streams.slice(0, 10).map((s) => (
+              <KickStreamCard key={s.id} stream={s} width={280} showGame />
+            ))}
+          </ScrollView>
+        ) : (
+          <Pressable onPress={() => router.navigate('/live')} style={styles.liveFallback}>
+            <MaterialCommunityIcons name="broadcast" size={22} color={Colors.live} />
+            <Text style={styles.liveFallbackText}>
+              {live.loading ? 'Loading live streams…' : 'Open the Live tab to watch on Twitch, YouTube and Kick'}
+            </Text>
+            <MaterialCommunityIcons name="chevron-right" size={20} color={Colors.textMuted} />
+          </Pressable>
+        )}
+
+        {/* Deals */}
+        {deals.length > 0 && (
+          <>
+            <View style={styles.gap} />
+            <SectionHeader title="On sale" subtitle="Current Steam discounts" />
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.hRow}>
+              {deals.map((g) => (
+                <GameTile key={g.id} game={g} width={150} />
+              ))}
+            </ScrollView>
+          </>
+        )}
+
+        {/* Free */}
+        <View style={styles.gap} />
+        <SectionHeader title="Free to play" subtitle="Jump in without paying anything" />
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.hRow}>
+          {free.map((g) => (
+            <GameTile key={g.id} game={g} width={150} />
           ))}
         </ScrollView>
 
         {/* Browse */}
-        <View style={{ height: Spacing.five }} />
-        <SectionHeader title="Browse games" subtitle={`${games.length} games in the store`} />
+        <View style={styles.gap} />
+        <SectionHeader title="All games" subtitle={`${games.length} of the world's best games`} />
         <View style={styles.search}>
           <MaterialCommunityIcons name="magnify" size={20} color={Colors.textMuted} />
           <TextInput
             value={query}
             onChangeText={setQuery}
-            placeholder="Search games or genres"
+            placeholder="Search games, studios or genres"
             placeholderTextColor={Colors.textMuted}
             style={styles.searchInput}
           />
           {!!query && <MaterialCommunityIcons name="close-circle" size={18} color={Colors.textMuted} onPress={() => setQuery('')} />}
         </View>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: Spacing.three, gap: Spacing.two, marginBottom: Spacing.three }}>
-          {GENRES.map((g) => (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={[styles.hRow, { gap: Spacing.two, marginBottom: Spacing.three }]}>
+          {ALL_GENRES.map((g) => (
             <Chip key={g} label={g} active={g === genre} onPress={() => setGenre(g)} />
           ))}
         </ScrollView>
-        <View style={styles.list}>
+        <View style={styles.grid}>
           {browse.map((g) => (
-            <GameRow key={g.id} game={g} />
+            <GameTile key={g.id} game={g} width={tileWidth} />
           ))}
-          {browse.length === 0 && <Text style={styles.empty}>No games match your search.</Text>}
         </View>
+        {browse.length === 0 && <Text style={styles.empty}>No games match your search.</Text>}
       </View>
     </ScrollView>
   );
 }
 
 function FeaturedCard({ game, width }: { game: Game; width: number }) {
-  const viewers = viewersFor(game.id);
-  const liveCount = streamsFor(game.id).length;
   return (
     <Pressable
       onPress={() => router.push({ pathname: '/game/[id]', params: { id: game.id } })}
       style={({ pressed }) => [{ width }, pressed && { transform: [{ scale: 0.985 }] }]}>
-      <GameCover game={game} iconSize={120} style={styles.featured}>
-        <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.25)', 'rgba(7,7,12,0.95)']} locations={[0, 0.45, 1]} style={StyleSheet.absoluteFill} />
+      <GameCover game={game} variant="hero" style={styles.featured}>
+        <LinearGradient colors={['rgba(7,7,12,0)', 'rgba(7,7,12,0.55)', 'rgba(7,7,12,0.97)']} locations={[0, 0.45, 1]} style={StyleSheet.absoluteFill} />
         <View style={styles.featuredTop}>
-          <LiveBadge viewers={viewers} />
-          <Text style={styles.featuredTopText}>{liveCount} top players streaming</Text>
+          <View style={styles.featuredTag}>
+            <MaterialCommunityIcons name="star-four-points" size={12} color="#000" />
+            <Text style={styles.featuredTagText}>FEATURED</Text>
+          </View>
+          {game.metacritic && <MetacriticBadge score={game.metacritic} />}
         </View>
         <View style={styles.featuredBottom}>
-          <Text style={styles.featuredGenres}>{game.genres.join('  ·  ').toUpperCase()}</Text>
+          <Text style={[styles.featuredGenres, { color: game.accent }]}>{game.genres.join('  ·  ').toUpperCase()}</Text>
           <Text style={styles.featuredTitle}>{game.title}</Text>
           <Text style={styles.featuredTagline} numberOfLines={2}>
             {game.tagline}
@@ -177,38 +219,41 @@ function FeaturedCard({ game, width }: { game: Game; width: number }) {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: Colors.background },
   content: { alignItems: 'center' },
-  topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    paddingHorizontal: Spacing.three,
-    marginBottom: Spacing.four,
-  },
+  topBar: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: Spacing.three, marginBottom: Spacing.four },
   logo: { width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   brand: { color: Colors.text, fontSize: 20, fontWeight: '900', letterSpacing: -0.4 },
   brandSub: { color: Colors.textSecondary, fontSize: 12, marginTop: 1 },
+  signInPill: { backgroundColor: Colors.text, paddingHorizontal: 14, height: 42, borderRadius: 21, justifyContent: 'center' },
+  signInText: { color: '#000', fontSize: 13, fontWeight: '800' },
   featured: { height: 440, borderRadius: Radius.lg },
-  featuredTop: { position: 'absolute', top: 16, left: 16, right: 16, flexDirection: 'row', alignItems: 'center', gap: 8 },
-  featuredTopText: { color: '#fff', fontSize: 12, fontWeight: '700', textShadowColor: 'rgba(0,0,0,0.5)', textShadowRadius: 6 },
+  featuredTop: { position: 'absolute', top: 16, left: 16, right: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  featuredTag: { flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: Colors.gold, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 6 },
+  featuredTagText: { color: '#000', fontSize: 10, fontWeight: '900', letterSpacing: 0.8 },
   featuredBottom: { position: 'absolute', left: 20, right: 20, bottom: 20, gap: 6 },
-  featuredGenres: { color: Colors.accent2, fontSize: 11, fontWeight: '800', letterSpacing: 1.2 },
-  featuredTitle: { color: '#fff', fontSize: 36, fontWeight: '900', letterSpacing: -1 },
-  featuredTagline: { color: 'rgba(255,255,255,0.78)', fontSize: 14, lineHeight: 20 },
+  featuredGenres: { fontSize: 11, fontWeight: '800', letterSpacing: 1.2 },
+  featuredTitle: { color: '#fff', fontSize: 34, fontWeight: '900', letterSpacing: -1 },
+  featuredTagline: { color: 'rgba(255,255,255,0.8)', fontSize: 14, lineHeight: 20 },
   featuredFooter: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 },
-  watchPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: Radius.pill,
-  },
+  watchPill: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#fff', paddingHorizontal: 14, paddingVertical: 10, borderRadius: Radius.pill },
   watchPillText: { color: '#000', fontSize: 14, fontWeight: '800' },
   dots: { flexDirection: 'row', justifyContent: 'center', gap: 6, marginTop: 14, marginBottom: Spacing.five },
   dot: { width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.2)' },
   dotActive: { width: 22, backgroundColor: Colors.accent },
   seeAll: { color: Colors.accent2, fontSize: 14, fontWeight: '700' },
+  hRow: { paddingHorizontal: Spacing.three, gap: Spacing.three },
+  gap: { height: Spacing.five },
+  liveFallback: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    marginHorizontal: Spacing.three,
+    padding: Spacing.three,
+    borderRadius: Radius.md,
+    backgroundColor: Colors.surface,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  liveFallbackText: { flex: 1, color: Colors.textSecondary, fontSize: 14 },
   search: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -223,6 +268,6 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
   },
   searchInput: { flex: 1, color: Colors.text, fontSize: 15, outlineWidth: 0 },
-  list: { paddingHorizontal: Spacing.three, gap: Spacing.three },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three, paddingHorizontal: Spacing.three, rowGap: Spacing.four },
   empty: { color: Colors.textSecondary, textAlign: 'center', paddingVertical: Spacing.five },
 });

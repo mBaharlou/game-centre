@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
 import { Colors } from '@/constants/theme';
+import { AuthProvider, useAuth } from '@/store/auth';
 import { CartProvider } from '@/store/cart';
 
 SplashScreen.preventAutoHideAsync();
@@ -21,20 +22,33 @@ const theme = {
 };
 
 export default function RootLayout() {
-  useEffect(() => {
-    SplashScreen.hideAsync();
-  }, []);
-
   return (
     <ThemeProvider value={theme}>
-      <CartProvider>
-        <StatusBar style="light" />
-        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: Colors.background } }}>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="game/[id]" />
-          <Stack.Screen name="watch/[id]" options={{ presentation: 'modal' }} />
-        </Stack>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <StatusBar style="light" />
+          <AppStack />
+        </CartProvider>
+      </AuthProvider>
     </ThemeProvider>
+  );
+}
+
+function AppStack() {
+  const { ready } = useAuth();
+
+  // Keep the splash screen up until the saved session has been restored.
+  useEffect(() => {
+    if (ready) SplashScreen.hideAsync();
+  }, [ready]);
+
+  return (
+    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: Colors.background } }}>
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="game/[id]" />
+      <Stack.Screen name="watch" options={{ presentation: 'modal' }} />
+      <Stack.Screen name="auth" options={{ presentation: 'modal' }} />
+      <Stack.Screen name="profile-edit" options={{ presentation: 'modal' }} />
+    </Stack>
   );
 }

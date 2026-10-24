@@ -1,10 +1,11 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { ReactNode } from 'react';
-import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View, type StyleProp, type TextInputProps, type ViewStyle } from 'react-native';
 
 import { AccentGradient, Colors, Radius, Spacing } from '@/constants/theme';
-import { finalPrice, formatPrice, type Game, type IconName } from '@/data/games';
+import { formatPrice, type Game, type IconName } from '@/data/games';
 
 export function SectionHeader({ title, subtitle, action }: { title: string; subtitle?: string; action?: ReactNode }) {
   return (
@@ -49,13 +50,13 @@ export function PriceTag({ game, size = 'md' }: { game: Game; size?: 'md' | 'lg'
   const big = size === 'lg';
   return (
     <View style={styles.priceRow}>
-      {!!game.discount && (
+      {game.discount > 0 && (
         <View style={styles.discount}>
           <Text style={styles.discountText}>-{game.discount}%</Text>
         </View>
       )}
-      {!!game.discount && <Text style={styles.oldPrice}>{formatPrice(game.price)}</Text>}
-      <Text style={[styles.price, big && { fontSize: 22 }]}>{formatPrice(finalPrice(game))}</Text>
+      {game.discount > 0 && <Text style={styles.oldPrice}>{formatPrice(game.price)}</Text>}
+      <Text style={[styles.price, big && { fontSize: 22 }]}>{formatPrice(game.finalPrice)}</Text>
     </View>
   );
 }
@@ -100,13 +101,36 @@ export function IconButton({ icon, onPress, badge }: { icon: IconName; onPress?:
   );
 }
 
-/** Round avatar showing the first letter of a name on a colour picked from the name. */
-export function Avatar({ name, size = 32 }: { name: string; size?: number }) {
+/**
+ * Round avatar: a picture when `uri` is given, otherwise the first letter of the name
+ * on `color` (or a colour picked from the name).
+ */
+export function Avatar({ name, size = 32, color, uri }: { name: string; size?: number; color?: string; uri?: string | null }) {
   const hues = ['#8B5CF6', '#22D3EE', '#F43F5E', '#F97316', '#34D399', '#FBBF24', '#6366F1'];
-  const color = hues[[...name].reduce((sum, ch) => sum + ch.charCodeAt(0), 0) % hues.length];
+  const bg = color ?? hues[[...name].reduce((sum, ch) => sum + ch.charCodeAt(0), 0) % hues.length];
+  const box = { width: size, height: size, borderRadius: size / 2 };
+  if (uri) return <Image source={{ uri }} style={[styles.avatar, box]} contentFit="cover" />;
   return (
-    <View style={[styles.avatar, { width: size, height: size, borderRadius: size / 2, backgroundColor: color }]}>
-      <Text style={[styles.avatarText, { fontSize: size * 0.42 }]}>{name[0].toUpperCase()}</Text>
+    <View style={[styles.avatar, box, { backgroundColor: bg }]}>
+      <Text style={[styles.avatarText, { fontSize: size * 0.42 }]}>{(name[0] ?? '?').toUpperCase()}</Text>
+    </View>
+  );
+}
+
+export function TextField({
+  label,
+  icon,
+  right,
+  ...input
+}: TextInputProps & { label: string; icon?: IconName; right?: ReactNode }) {
+  return (
+    <View style={{ gap: 6 }}>
+      <Text style={styles.fieldLabel}>{label}</Text>
+      <View style={[styles.field, input.multiline && { height: 96, alignItems: 'flex-start', paddingTop: 12 }]}>
+        {icon && <MaterialCommunityIcons name={icon} size={18} color={Colors.textMuted} />}
+        <TextInput placeholderTextColor={Colors.textMuted} {...input} style={[styles.fieldInput, input.multiline && { height: '100%', textAlignVertical: 'top' }]} />
+        {right}
+      </View>
     </View>
   );
 }
@@ -182,6 +206,19 @@ const styles = StyleSheet.create({
   iconBadgeText: { color: '#fff', fontSize: 10, fontWeight: '900' },
   avatar: { alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: Colors.background },
   avatarText: { color: '#fff', fontWeight: '900' },
+  fieldLabel: { color: Colors.textSecondary, fontSize: 13, fontWeight: '700' },
+  field: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    height: 50,
+    paddingHorizontal: 14,
+    borderRadius: Radius.md,
+    backgroundColor: Colors.surface,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  fieldInput: { flex: 1, color: Colors.text, fontSize: 15, outlineWidth: 0 },
   ratingRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   ratingText: { color: Colors.text, fontSize: 13, fontWeight: '800' },
   ratingCount: { color: Colors.textMuted, fontSize: 12 },

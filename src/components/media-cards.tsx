@@ -1,45 +1,60 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { LiveBadge, PlatformBadge, RankBadge } from '@/components/badges';
+import { LiveBadge, PlatformBadge } from '@/components/badges';
 import { GameCover } from '@/components/game-cover';
 import { Avatar } from '@/components/ui';
-import { Colors, Radius } from '@/constants/theme';
-import { formatCount, getGame, type Stream, type Video } from '@/data/games';
+import { Colors, Platforms, Radius, type PlatformId } from '@/constants/theme';
+import { getGame, links, type Game, type IconName, type Trailer } from '@/data/games';
+import type { KickStream } from '@/services/kick';
+import { openLink } from '@/utils/open-link';
 
-type StreamCardProps = {
-  stream: Stream;
-  width?: number;
-  /** Show the game's name under the title (useful outside the game page). */
-  showGame?: boolean;
-};
+export function openKickStream(stream: KickStream) {
+  router.push({
+    pathname: '/watch',
+    params: {
+      kind: 'kick',
+      gameId: stream.gameId,
+      channel: stream.channel,
+      title: stream.title,
+      username: stream.username,
+      viewers: String(stream.viewers),
+      avatar: stream.avatar ?? '',
+    },
+  });
+}
 
-export function StreamCard({ stream, width, showGame }: StreamCardProps) {
+/** A real live stream from Kick. Opens in the in-app player. */
+export function KickStreamCard({ stream, width, showGame }: { stream: KickStream; width?: number; showGame?: boolean }) {
   const game = getGame(stream.gameId)!;
   return (
-    <Pressable
-      onPress={() => router.push({ pathname: '/watch/[id]', params: { id: stream.id } })}
-      style={({ pressed }) => [{ width }, pressed && styles.pressed]}>
-      <GameCover game={game} iconSize={44} style={styles.thumb}>
-        <LinearGradient colors={['transparent', 'rgba(0,0,0,0.65)']} style={StyleSheet.absoluteFill} />
-        <View style={styles.thumbTopLeft}>
+    <Pressable onPress={() => openKickStream(stream)} style={({ pressed }) => [{ width }, pressed && styles.pressed]}>
+      <GameCover game={game} variant="header" style={styles.thumb}>
+        {stream.thumbnail && <Image source={{ uri: stream.thumbnail }} style={StyleSheet.absoluteFill} contentFit="cover" transition={200} />}
+        <LinearGradient colors={['rgba(0,0,0,0.35)', 'transparent', 'rgba(0,0,0,0.55)']} style={StyleSheet.absoluteFill} />
+        <View style={styles.topLeft}>
           <LiveBadge viewers={stream.viewers} />
         </View>
-        <View style={styles.thumbTopRight}>{stream.rank && <RankBadge rank={stream.rank} />}</View>
-        <View style={styles.thumbBottomLeft}>
-          <PlatformBadge platform={stream.platform} />
+        <View style={styles.bottomLeft}>
+          <PlatformBadge platform="kick" />
+          {!!stream.language && (
+            <View style={styles.lang}>
+              <Text style={styles.langText}>{stream.language}</Text>
+            </View>
+          )}
         </View>
       </GameCover>
       <View style={styles.meta}>
-        <Avatar name={stream.streamer} size={34} />
+        <Avatar name={stream.username} uri={stream.avatar} size={34} />
         <View style={{ flex: 1 }}>
           <Text style={styles.title} numberOfLines={1}>
             {stream.title}
           </Text>
           <Text style={styles.sub} numberOfLines={1}>
-            {stream.streamer}
+            {stream.username}
             {showGame ? ` · ${game.title}` : ''}
           </Text>
         </View>
@@ -48,32 +63,57 @@ export function StreamCard({ stream, width, showGame }: StreamCardProps) {
   );
 }
 
-export function VideoCard({ video }: { video: Video }) {
-  const game = getGame(video.gameId)!;
+/** An official Steam trailer. Opens in the in-app player. */
+export function TrailerCard({ game, trailer, index, width }: { game: Game; trailer: Trailer; index: number; width?: number }) {
   return (
     <Pressable
-      onPress={() => router.push({ pathname: '/watch/[id]', params: { id: video.id } })}
-      style={({ pressed }) => [styles.videoRow, pressed && styles.pressed]}>
-      <GameCover game={game} iconSize={30} hideIcon style={styles.videoThumb}>
-        <View style={styles.play}>
-          <MaterialCommunityIcons name="play" size={18} color="#fff" />
-        </View>
-        <View style={styles.duration}>
-          <Text style={styles.durationText}>{video.duration}</Text>
+      onPress={() => router.push({ pathname: '/watch', params: { kind: 'trailer', gameId: game.id, index: String(index) } })}
+      style={({ pressed }) => [{ width }, pressed && styles.pressed]}>
+      <GameCover game={game} variant="header" style={styles.thumb}>
+        <Image source={{ uri: trailer.thumbnail }} style={StyleSheet.absoluteFill} contentFit="cover" transition={200} />
+        <View style={styles.playWrap}>
+          <View style={styles.play}>
+            <MaterialCommunityIcons name="play" size={26} color="#fff" />
+          </View>
         </View>
       </GameCover>
-      <View style={{ flex: 1, gap: 4 }}>
-        <Text style={styles.title} numberOfLines={2}>
-          {video.title}
-        </Text>
-        <Text style={styles.sub}>{video.creator}</Text>
-        <View style={styles.videoMeta}>
-          <PlatformBadge platform={video.platform} label={false} />
-          <Text style={styles.sub}>
-            {formatCount(video.views)} views · {video.posted}
-          </Text>
-        </View>
+      <Text style={[styles.title, { marginTop: 8 }]} numberOfLines={1}>
+        {trailer.name}
+      </Text>
+      <Text style={styles.sub}>Official trailer · Steam</Text>
+    </Pressable>
+  );
+}
+
+/** Big button that opens a game's live directory on Twitch, YouTube or Kick. */
+export function PlatformLiveButton({ platform, game }: { platform: PlatformId; game: Game }) {
+  const p = Platforms[platform];
+  const url = platform === 'twitch' ? links.twitch(game) : platform === 'youtube' ? links.youtubeLive(game) : links.kick(game);
+  const dark = platform === 'kick';
+  return (
+    <Pressable onPress={() => openLink(url)} style={({ pressed }) => [styles.platformButton, { backgroundColor: p.color }, pressed && styles.pressed]}>
+      <MaterialCommunityIcons name={p.icon} size={22} color={dark ? '#000' : '#fff'} />
+      <View style={{ flex: 1 }}>
+        <Text style={[styles.platformTitle, dark && { color: '#000' }]}>Live on {p.name}</Text>
+        <Text style={[styles.platformSub, dark && { color: 'rgba(0,0,0,0.7)' }]}>Top streams, most viewers first</Text>
       </View>
+      <MaterialCommunityIcons name="open-in-new" size={18} color={dark ? '#000' : '#fff'} />
+    </Pressable>
+  );
+}
+
+/** A row that opens an outside page, e.g. a YouTube search. */
+export function LinkRow({ icon, title, subtitle, url, color = Colors.text }: { icon: IconName; title: string; subtitle?: string; url: string; color?: string }) {
+  return (
+    <Pressable onPress={() => openLink(url)} style={({ pressed }) => [styles.linkRow, pressed && { opacity: 0.75 }]}>
+      <View style={[styles.linkIcon, { backgroundColor: color + '22' }]}>
+        <MaterialCommunityIcons name={icon} size={20} color={color} />
+      </View>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.title}>{title}</Text>
+        {subtitle && <Text style={styles.sub}>{subtitle}</Text>}
+      </View>
+      <MaterialCommunityIcons name="open-in-new" size={18} color={Colors.textMuted} />
     </Pressable>
   );
 }
@@ -81,32 +121,36 @@ export function VideoCard({ video }: { video: Video }) {
 const styles = StyleSheet.create({
   pressed: { opacity: 0.85, transform: [{ scale: 0.98 }] },
   thumb: { aspectRatio: 16 / 9, borderRadius: Radius.md },
-  thumbTopLeft: { position: 'absolute', top: 10, left: 10 },
-  thumbTopRight: { position: 'absolute', top: 10, right: 10 },
-  thumbBottomLeft: { position: 'absolute', bottom: 10, left: 10 },
+  topLeft: { position: 'absolute', top: 10, left: 10 },
+  bottomLeft: { position: 'absolute', bottom: 10, left: 10, flexDirection: 'row', gap: 6, alignItems: 'center' },
+  lang: { backgroundColor: 'rgba(0,0,0,0.6)', paddingHorizontal: 7, paddingVertical: 3, borderRadius: 6 },
+  langText: { color: '#fff', fontSize: 10, fontWeight: '700' },
   meta: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 10 },
   title: { color: Colors.text, fontSize: 14, fontWeight: '700' },
-  sub: { color: Colors.textSecondary, fontSize: 12 },
-  videoRow: { flexDirection: 'row', gap: 12, alignItems: 'center' },
-  videoThumb: { width: 140, aspectRatio: 16 / 9, borderRadius: Radius.sm },
+  sub: { color: Colors.textSecondary, fontSize: 12, marginTop: 2 },
+  playWrap: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' },
   play: {
-    position: 'absolute',
-    width: 34,
-    height: 34,
-    borderRadius: 17,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
     backgroundColor: 'rgba(0,0,0,0.55)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.4)',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  duration: {
-    position: 'absolute',
-    bottom: 6,
-    right: 6,
-    backgroundColor: 'rgba(0,0,0,0.75)',
-    paddingHorizontal: 5,
-    paddingVertical: 1,
-    borderRadius: 4,
+  platformButton: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: Radius.md },
+  platformTitle: { color: '#fff', fontSize: 15, fontWeight: '800' },
+  platformSub: { color: 'rgba(255,255,255,0.8)', fontSize: 12, marginTop: 1 },
+  linkRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    padding: 12,
+    borderRadius: Radius.md,
+    backgroundColor: Colors.surface,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
-  durationText: { color: '#fff', fontSize: 10, fontWeight: '700' },
-  videoMeta: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  linkIcon: { width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
 });
